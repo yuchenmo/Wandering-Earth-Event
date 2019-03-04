@@ -1,0 +1,32 @@
+namespace = gear
+
+# 开局随机事件
+country_event = {
+	id = gear.1
+	hide_window = yes
+
+	is_triggered_only = yes
+	trigger = {
+		has_country_flag = earth_pushed_1
+	}
+	immediate = {
+		random_list = {
+
+			10 = { country_event = { id = country.258 days = 360 random = 10 } }
+
+			10 = { 
+					modifier = {
+						factor = 0
+						has_country_flag = hyperd_1
+					}
+					country_event = { id = country.200 days = 30 random = 10 } 
+			}
+			# Wanderlust
+			1 = { country_event = { id = country.1000 days = 30 random = 10 } }
+			# Mass Extinction
+			10 = { country_event = { id = country.1100 days = 30 random = 10 } }
+			# No starting event
+			69 = { set_country_flag = starting_event }
+		}
+	}
+}

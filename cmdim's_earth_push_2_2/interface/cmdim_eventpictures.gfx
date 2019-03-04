@@ -1,0 +1,79 @@
+spriteTypes = {	
+
+
+	spriteType = {
+		name = "GFX_evt_mars_to_be"
+		texturefile = "gfx/event_pictures/mars_to_be.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes		
+	}
+	
+		spriteType = {
+		name = "GFX_evt_earth_push"
+		texturefile = "gfx/event_pictures/earth_push.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes		
+	}
+	
+	spriteType = {
+		name = "GFX_evt_earth_push_2"
+		texturefile = "gfx/event_pictures/earth_push_2.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes		
+	}
+	
+	spriteType = {
+		name = "GFX_evt_earth_engine"
+		texturefile = "gfx/event_pictures/earth_engine.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes		
+	}
+	
+	spriteType = {
+		name = "GFX_evt_earth_engine_2"
+		texturefile = "gfx/event_pictures/earth_engine_2.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes		
+	}
+	
+	spriteType = {
+		name = "GFX_evt_earth_engine_3"
+		texturefile = "gfx/event_pictures/earth_engine_3.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes		
+	}
+	
+	spriteType = {
+		name = "GFX_evt_earth_engine_4"
+		texturefile = "gfx/event_pictures/earth_engine_4.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes		
+	}
+	
+	spriteType = {
+		name = "GFX_evt_earth_engine_5"
+		texturefile = "gfx/event_pictures/earth_engine_5.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes		
+	}
+	
+	spriteType = {
+		name = "GFX_evt_earth_space_station"
+		texturefile = "gfx/event_pictures/earth_space_station.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes		
+	}
+	
+	spriteType = {
+		name = "GFX_evt_earth_rocket_launching"
+		texturefile = "gfx/event_pictures/earth_rocket_launching.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes		
+	}
+	
+	spriteType = {
+		name = "GFX_evt_earth_ruined_city"
+		texturefile = "gfx/event_pictures/earth_ruined_city.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes		
+	}

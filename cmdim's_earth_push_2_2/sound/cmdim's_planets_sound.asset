@@ -1,0 +1,8 @@
+####### PLANET AMBIENT ############
+sound =
+{
+	name = "pc_mars_to_be_01"
+	file = "ambient/barren_planet_02.wav"
+	always_load = no
+}
+sound =

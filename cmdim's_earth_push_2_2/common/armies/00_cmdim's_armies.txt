@@ -1,0 +1,59 @@
+#Defensive armies can't transport of the planet
+#maintenance is directly scripted here. 0.25 translates to 0.25 monthly cost (excluding other upkeep modifiers)
+#morale_damage = 1		# average morale damage of the army, default: auto (calculated from morale * MORALE_DAMAGE_MULT)
+#building spawned armies can't be built normally, but only created from pops working buildings
+
+
+postatomic_army_defense = {
+	defensive = yes
+	is_pop_spawned = yes
+	damage = 0.7
+	health = 1.2
+	morale = 1.2
+	war_exhaustion = 0.0
+	icon_frame = 5
+	name = "Coalition Government Forces"
+	potential = {
+	
+		planet = { has_building = "building_primitive_capital2"  }
+	
+		owner = {
+			is_primitive = yes
+			OR = {
+				has_country_flag = wandering_earth_age
+			}
+			
+		}
+	}
+}
+
+earth_rebel_army = {
+	damage = 0.7
+	health = 1.1
+	morale = 1.4
+	morale_damage = 1.00
+	collateral_damage = 1.00
+	war_exhaustion = 1.00
+	time = 90
+	icon_frame = 2
+	prerequisites = { "tech_assault_armies" }
+	resources = {
+		category = armies
+		cost = {
+			minerals = 100
+		}
+
+		upkeep = {
+			energy = 1
+		}
+	}
+
+	owner = {
+			
+			OR = {
+				has_country_flag = country_earth_rebel
+			}
+			
+		}
+	
+}

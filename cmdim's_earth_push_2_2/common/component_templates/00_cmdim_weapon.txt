@@ -1,0 +1,170 @@
+# Icons set here are the ones show in the actual slot. The reason is so that we can support different icons for different sizes. 
+
+#############
+#	COST	#
+#############
+
+@cost_6S = 30
+@cost_6M = 60
+@cost_6L = 120
+
+#############
+#	 FTL	#
+#############
+
+@ftl1 = 5
+@ftl2 = 10
+@ftl3 = 15
+@ftl4 = 30
+
+@power1 = -5
+@power2 = -7.5
+@power3 = -10
+@power4 = -10
+
+########################
+# Enigmatic Fortress
+########################
+
+weapon_component_template = {
+	type = instant
+	
+	key = "SMALL_PRIMITIVE_MASS_DRIVER_1"
+	size = small
+	entity = "small_kinetic_gun_entity"
+	
+	damage = { min = 3 max = 10 }
+	windup = { min = 1 max = 18 }
+	total_fire_time = 25  # was 25
+	range = 35.0
+	accuracy = 0.65
+	tracking = 0.25
+	shield_damage = 1.50
+	armor_damage = 0.50
+	power = -3
+	
+	icon = "GFX_ship_part_mass_driver_1"
+	icon_frame = 1
+	
+	prerequisites = { "tech_primitive_ship" }
+	component_set = "PRIMITIVE_MASS_DRIVER_1"
+	projectile_gfx = "mass_driver_s"
+	tags = { weapon_type_kinetic }
+	ai_tags = { weapon_role_anti_shield }
+
+	resources = {
+		category = ship_components
+		cost = {
+			minerals = 16
+		}		
+		upkeep = {
+			energy = 0.03
+			minerals = 0.08
+		}
+	}
+}
+
+# Plasteel Armor
+utility_component_template = {
+	key = "SMALL_PRIMITIVE_ARMOR_1"
+	size = small
+	icon = "GFX_ship_part_armor_1"
+	icon_frame = 1
+	prerequisites = { "tech_primitive_ship" }
+	power = 0
+	modifier = {
+		ship_armor_add = 45
+		ship_hull_add = -60
+	}
+
+	component_set = "PRIMITIVE_ARMOR_1"
+
+	resources = {
+		category = ship_components
+		cost = {
+			minerals = 15
+		}		
+		upkeep = {
+			energy = 0
+			minerals = 0.06
+		}
+	}
+}
+
+
+utility_component_template = {
+	key = "SHIP_PRIMITIVE_THRUSTER_1"
+	size = small
+	icon = "GFX_ship_part_thruster_1"
+	icon_frame = 1
+	prerequisites = { "tech_primitive_ship" }
+	power = -3
+	resources = {
+		category = ship_components
+		cost = {
+			minerals = 8
+		}
+	}
+	
+	modifier = {
+	ship_base_speed_mult = -0.5
+	}
+		
+	component_set = "thruster_components"
+	
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+utility_component_template = {
+	key = "PRIMITIVE_SENSOR_1"
+	size = medium
+	icon = "GFX_ship_part_sensor_1"
+	icon_frame = 1
+	prerequisites = { "tech_primitive_ship" }
+	power = -3
+	resources = {
+		category = ship_components
+		cost = {
+			minerals = 8
+		}
+	}
+	sensor_range = @sensor1
+	hyperlane_range = @hyperlane1
+	
+	component_set = "sensor_components"
+	
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+
+utility_component_template = {
+	key = "CORVETTE_PRIMITIVE_FISSION_REACTOR"
+	size = small
+	icon = "GFX_ship_part_reactor_1"
+	icon_frame = 1
+	prerequisites = { "tech_primitive_ship" }
+	power = 15
+	resources = {
+		category = ship_components
+		cost = {
+			minerals = 20
+		}	
+		upkeep = {
+			energy = 0.07
+		}
+	}
+	
+
+	component_set = "power_core"
+	
+
+	
+	ai_weight = {
+		weight = 0
+	}
+}

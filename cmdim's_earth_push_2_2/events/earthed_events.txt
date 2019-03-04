@@ -1,0 +1,66 @@
+namespace = earth_pushed
+country_event = {
+id = marsed.2
+  is_triggered_only = yes
+hide_window = yes
+
+	trigger = {
+		has_country_flag = earth_pushed_1
+	}
+immediate = {
+		
+		
+		random_owned_leader = {
+			limit = { leader_class = ruler }
+			save_event_target_as = leader_1
+		}
+		create_leader = {
+			type = ruler
+			species = owner_species		
+			gender = female
+			name = "Cixin Liu"
+			portrait = "human_male_04"
+			texture=0
+			hair=4
+			clothes=2
+			traits = {
+				trait = trait_ruler_world_shaper
+				trait = trait_ruler_fertility_preacher
+			}
+		}
+		last_created_leader = {
+			
+			set_age = 45
+				
+		}
+		assign_leader = last_created_leader
+
+	}
+}	
+
+country_event = {
+	id = marsed.100
+	title = earth_push.5.name
+	desc = earth_push.5.desc
+	hide_window = yes
+	picture = GFX_evt_earth_push
+	fire_only_once = yes
+	trigger = {
+		has_country_flag = earth_pushed_1
+	}
+	
+	
+	
+	mean_time_to_happen = { days = 5 }
+	immediate = {	
+	
+		add_resource = {
+			minerals = 300
+		}
+		owner = { 
+		give_technology = {tech = tech_heavy_elements_generator message = yes}
+		give_technology = {tech = tech_heavy_elements_generator_2 message = yes}
+		}
+	}
+}
+

@@ -1,0 +1,15 @@
+# Icons set here are the ones shown in compnent editor list.
+
+component_set = {
+	key = "PRIMITIVE_MASS_DRIVER_1"
+	
+	icon = "GFX_ship_part_mass_driver_1"
+	icon_frame = 1	
+}
+
+component_set = {
+	key = "PRIMITIVE_ARMOR_1"
+	
+	icon = "GFX_ship_part_armor_1"
+	icon_frame = 1	
+}

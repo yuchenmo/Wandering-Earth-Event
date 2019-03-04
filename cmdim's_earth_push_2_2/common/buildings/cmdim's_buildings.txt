@@ -1,0 +1,290 @@
+###########################
+# Branch Office Buildings #
+###########################
+
+## REGULAR MEGACORP ##
+building_earth_push = {
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	
+	potential = {
+		exists = owner
+		owner = { 
+			
+				has_country_flag = wandering_earth_age
+			
+		}
+	}
+	
+	planet_modifier = {
+		job_primitive_technician_wandering_add = 1
+		job_primitive_laborer_wandering_add = 1
+		planet_housing_add = 3
+	}
+		
+	upgrades = {
+	}
+}
+
+building_earth_push2 = {
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	icon = building_earth_push
+	potential = {
+		exists = owner
+		owner = { 
+			
+				has_country_flag = wandering_earth_age
+			
+		}
+	}
+	
+	planet_modifier = {
+		job_primitive_farmer_wandering_add = 2
+		planet_housing_add = 3
+	}
+		
+	upgrades = {
+	}
+}
+
+building_earth_push3 = {
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	icon = building_earth_push
+	potential = {
+		exists = owner
+		owner = { 
+		
+				has_country_flag = wandering_earth_age
+			
+		}
+	}
+	
+	planet_modifier = {
+		job_primitive_farmer_wandering_add = 1
+		job_primitive_miner_wandering_add = 1
+		planet_housing_add = 3
+	}
+		
+	upgrades = {
+	}
+}
+
+building_primitive_capital2 = {
+	capital = yes
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	icon = building_primitive_capital
+
+	potential = {
+		exists = owner
+		owner = { 
+			
+				has_country_flag = wandering_earth_age
+			
+		}
+	}
+	
+	planet_modifier = {
+#		pop_defense_armies_add = 1
+		job_primitive_bureaucrat_wandering_add = 2
+		job_primitive_warrior_2_wandering_add = 2
+		job_primitive_researcher_2_wandering_add = 3
+		job_primitive_priest_2_wandering_add = 1
+		planet_housing_add = 5
+		planet_amenities_add = 25
+		planet_crime_add = -20
+	}
+		
+	upgrades = {
+	}
+}
+
+#################
+
+building_heavy_elements_generator_1 = {
+	base_buildtime = 360
+	can_build = yes
+	base_cap_amount = 1
+	category = resource
+		
+	prerequisites = {
+		"tech_heavy_elements_generator"
+	}	
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = job_heavy_elements_technician_effect_desc
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 400
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+		
+	planet_modifier = {
+		job_heavy_elements_technician_add = 2
+	}
+	
+	allow = {
+		
+	}
+	upgrades = {
+		building_heavy_elements_generator_2
+	}
+	ai_weight = {
+		weight = 1
+	}
+}
+
+
+building_heavy_elements_generator_2 = {
+	base_buildtime = 450
+	
+	can_build = no
+	
+	category = resource
+		
+	prerequisites = {
+		"tech_heavy_elements_generator_2"
+	}	
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = job_heavy_elements_technician_effect_desc
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 600
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+		
+	planet_modifier = {
+		job_heavy_elements_technician_add = 4
+	}
+	
+	allow = {
+		
+	}
+	
+	upgrades = {
+		building_heavy_elements_generator_3
+	}
+	
+	ai_weight = {
+		weight = 2
+	}
+}
+
+building_heavy_elements_generator_3 = {
+	base_buildtime = 600
+	
+	can_build = no
+	
+	category = resource
+		
+	prerequisites = {
+		"tech_heavy_elements_generator_2"
+	}	
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = job_heavy_elements_technician_effect_desc	
+	}
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = job_heavy_elements_technician_specialist_effect_desc
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+		
+	planet_modifier = {
+		job_heavy_elements_technician_add = 5
+		job_heavy_elements_technician_specialist_add = 1
+	}
+	
+	allow = {
+		
+	}
+
+	ai_weight = {
+		weight = 5
+	}
+}
+
+
+building_earth_push_culture = {
+	base_buildtime = 520
+	
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	category = unity
+		
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = job_earth_push_culture_effect_desc
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 600
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+		
+	planet_modifier = {
+		job_earth_push_culture_add = 4
+		planet_jobs_unity_produces_mult = 0.15
+	}
+	
+	allow = {
+		
+	}
+
+	ai_weight = {
+		weight = 2
+	}
+}
+
+
+
+
+
