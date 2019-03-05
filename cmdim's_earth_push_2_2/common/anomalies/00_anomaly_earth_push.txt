@@ -1,0 +1,19 @@
+EARTH_PUSH_FOUND = {
+	desc = "EARTH_PUSH_FOUND_DESC"
+	picture = "GFX_evt_ship_in_orbit"
+	level = 3
+
+	should_ai_and_humans_use = yes
+	
+	spawn_chance = {
+		modifier = {
+			add = 0
+			has_planet_flag = planet_earth_push
+		}
+	}
+	
+	on_success = {
+		
+		100 = earth_push.1
+	}
+}

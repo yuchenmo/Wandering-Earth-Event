@@ -1,0 +1,427 @@
+# Available requirements:
+#
+#	SKILLS
+#	#skill = 2
+#
+#	LEADER
+#	leader = scientist
+#	leader = admiral
+#	leader = general
+#	leader = ruler
+#	leader = governor
+#	
+#	MILITARY SHIPS
+#	shipclass_military = 1
+#	
+#	CIVILIAN SHIPS
+#	shipclass_constructor = 2
+#	shipclass_science_ship = 1
+#	shipclass_colonizer = 2
+#	
+#	ARMIES
+#	shipclass_transport = 1
+#	assault_armies = 2
+#	defense_armies = 1
+#	
+#	STATIONS
+#	research_station = yes
+#	mining_station = yes
+#	observation_station = yes
+#
+#	SCOPES
+#	abort_trigger
+#	this = country (project owner)
+#	from = event scope (planet or ship, MIGHT NOT EXIST)
+#	fromfrom = project creation scope (usually equals location)
+#	
+#	on_success
+#	this = event scope (ship or planet)
+#	from = project creation scope (usually equals location)
+#	
+#	on_cancel 
+#	this = country (project owner)
+#	from = event scope (planet or ship, MIGHT NOT EXIST)
+#	fromfrom = project creation scope (usually equals location)
+#
+#	on_fail
+#	this = country (project owner)
+#	from = project creation scope (usually equals location)
+
+
+# earth_push_project
+special_project = {
+	key = "EARTH_PUSH_PROJECT"
+	
+	cost = 0
+	days_to_research = 120
+	tech_department = engineering_technology
+	picture = GFX_evt_earth_push
+	icon = "gfx/interface/icons/situation_log/situation_log_engineering.dds"
+	event_chain = earth_push
+
+	event_scope = ship_event #planet_event
+	requirements = {
+		shipclass_science_ship = 1
+		leader = scientist
+		skill > 1
+	}
+	on_success = {
+	owner = { 
+		country_event = { id = earth_push.18 } 
+		set_country_flag = earth_push_research
+	    }
+			
+	}
+	
+	on_fail = {
+	}
+}
+
+# earth engine
+special_project = {
+	key = "EARTH_PUSH_PROJECT2"
+	
+	cost = 1000
+	
+	tech_department = engineering_technology
+	picture = GFX_evt_earth_push
+	icon = "gfx/interface/icons/situation_log/situation_log_engineering.dds"
+	event_chain = earth_push
+
+	event_scope = planet_event
+	
+	on_success = {
+	owner = { 
+		country_event = { id = earth_push.2 } 
+		set_country_flag = earth_push_research_2
+		 }
+			
+	}
+	
+	on_fail = {
+	}
+}
+
+#heavy elements
+special_project = {
+	key = "HEAVY_ELEMENTS_PUSH_PROJECT"
+#	cost = 1500
+	days_to_research = 300
+	tech_department = physics_technology
+  icon = "gfx/interface/icons/situation_log/situation_log_physics.dds"
+	picture = GFX_evt_physics_research
+	event_chain = earth_push
+	
+	event_scope = planet_event
+	
+	on_success = {
+	
+		
+		if = {
+			limit = {
+				has_country_flag = earth_be_invaded		
+			}
+			random_list = {
+				20 = {
+					owner = { country_event = { id = earth_push.3 }  }
+				}
+				80 = {
+					owner = { country_event = { id = earth_push.4 }  }
+				}
+			}
+		owner = {  
+				set_country_flag = heavy_elements_push_research
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = earth_push_research 
+			}
+			random_list = {
+				
+				55 = {
+					owner = { country_event = { id = earth_push.3 }  }
+				}
+				45 = {
+					owner = { country_event = { id = earth_push.4 }  }
+				}
+			}
+		owner = {  
+				set_country_flag = heavy_elements_push_research
+			}
+		}
+		
+		if = {
+			limit = {
+				OR = {
+				has_country_flag = earth_be_invaded
+					AND = {
+					has_country_flag = earth_push_research_2 
+					has_country_flag = earth_be_invaded
+					}
+			    }
+			}
+			random_list = {
+				0 = {
+					owner = { country_event = { id = earth_push.5 }  }
+				}
+				20 = {
+					owner = { country_event = { id = earth_push.3 }  }
+				}
+				80 = {
+					owner = { country_event = { id = earth_push.4 }  }
+					}
+				}
+			owner = {  
+				set_country_flag = heavy_elements_push_research
+				}
+			}	
+			if = {
+			limit = {
+				NOR = {
+				has_country_flag = earth_be_invaded
+				has_country_flag = earth_push_research
+					AND = {
+					has_country_flag = earth_push_research_2 
+					has_country_flag = earth_be_invaded
+					}
+			    }
+			}
+			random_list = {
+				5 = {
+					owner = { country_event = { id = earth_push.5 }  }
+				}
+				80 = {
+					owner = { country_event = { id = earth_push.3 }  }
+				}
+				15 = {
+					owner = { country_event = { id = earth_push.4 }  }
+					}
+				}
+			owner = {  
+				set_country_flag = heavy_elements_push_research
+				}
+			}
+		
+	}
+}
+#Remove the engine
+special_project = {
+	key = "REMOVE_EARTH_ENGINE"
+	
+	cost = 0
+	days_to_research = 60
+	
+	tech_department = engineering_technology
+	picture = GFX_evt_ship_in_orbit
+	icon = "gfx/interface/icons/situation_log/situation_log_engineering.dds"
+	event_chain = earth_push
+	
+	event_scope = ship_event
+	requirements = { 
+	shipclass_transport = 1
+	}
+	on_success = {
+	owner = { country_event = { id = earth_push.22 }  }
+			
+	}
+	
+	on_fail = {
+	}
+}
+
+#give @number
+special_project = {
+	key = "REMOVE_EARTH_ENGINE_2A"
+	cost = 0
+	days_to_research = 360
+	
+	tech_department = engineering_technology
+	picture = GFX_evt_earth_push_2
+	icon = "gfx/interface/icons/situation_log/situation_log_engineering.dds"
+	event_chain = earth_push
+	
+	event_scope = planet_event
+	
+	on_success = {
+	owner = { country_event = { id = earth_push.24 }  }
+			
+	}
+	
+	on_fail = {
+	}
+}
+
+#give deposit
+special_project = {
+	key = "REMOVE_EARTH_ENGINE_2B"
+	cost = 0
+	days_to_research = 150
+	
+	tech_department = engineering_technology
+	picture = GFX_evt_earth_push_2
+	icon = "gfx/interface/icons/situation_log/situation_log_engineering.dds"
+	event_chain = earth_push
+	
+	event_scope = planet_event
+	
+	on_success = {
+	owner = { country_event = { id = earth_push.25 }  }
+			
+	}
+	
+	on_fail = {
+	}
+}
+
+special_project = {
+	key = "EARTH_COMMUNICATION_PROJECT"
+	cost = 500
+	#days_to_research = 0
+	
+	tech_department = society_technology
+	picture = GFX_evt_society_research
+	icon = "gfx/interface/icons/situation_log/situation_log_radar.dds"
+	event_chain = earth_push
+	
+	event_scope = planet_event
+	
+	on_success = {
+	owner = { country_event = { id = earth_push.39 }  }
+			
+	}
+	
+	on_fail = {
+	}
+}
+
+special_project = {
+	key = "EARTH_FTL_HELP_PROJECT"
+	
+	#cost = 0
+	days_to_research = 360
+	tech_department = engineering_technology
+	picture = GFX_evt_physics_research
+	icon = "gfx/interface/icons/situation_log/situation_log_engineering.dds"
+	event_chain = earth_push
+
+	event_scope = planet_event
+	
+	on_success = {
+	owner = { 
+		country_event = { id = earth_push.41 } 
+		#set_country_flag = earth_push_research_2
+		}
+			
+	}
+	
+	on_fail = {
+	}
+}
+
+# HELP EARTH A
+special_project = {
+	key = "HELP_EARTH_MOVE_A"
+	
+	cost = 2500
+	#days_to_research = 0
+	tech_department = engineering_technology
+	picture = GFX_evt_earth_engine
+	icon = "gfx/interface/icons/situation_log/situation_log_engineering.dds"
+	event_chain = earth_push
+	timelimit = 520
+	event_scope = ship_event #planet_event
+	requirements = {
+		shipclass_constructor = 1
+		
+	}
+	on_success = {
+	change_variable = {
+		which = relationship_with_earth
+		value = 20
+		}
+	
+	owner = { 
+		country_event = { id = earth_push.61 } 
+	    }
+	}
+	
+	on_fail = {
+	change_variable = {
+		which = relationship_with_earth
+		value = -25
+		}
+		country_event = { id = earth_push.64 } 
+	}
+}
+
+# HELP EARTH B
+special_project = {
+	key = "HELP_EARTH_MOVE_B"
+	
+	#cost = 0
+	days_to_research = 720
+	tech_department = engineering_technology
+	picture = GFX_evt_earth_engine_5
+	icon = "gfx/interface/icons/situation_log/situation_log_engineering.dds"
+	event_chain = earth_push
+	timelimit = 1200
+	event_scope = ship_event #planet_event
+	requirements = {
+		shipclass_constructor = 1
+		
+	}
+	on_success = {
+	change_variable = {
+		which = relationship_with_earth
+		value = 25
+		}
+	owner = { 
+		country_event = { id = earth_push.62 } 
+	    }	
+	}
+	
+	on_fail = {
+	change_variable = {
+		which = relationship_with_earth
+		value = -10
+		}
+		country_event = { id = earth_push.64 } 
+	}
+}
+
+# HELP EARTH C
+special_project = {
+	key = "HELP_EARTH_MOVE_C"
+	
+	cost = 3500
+	#days_to_research = 0
+	tech_department = engineering_technology
+	picture = GFX_evt_earth_engine_2
+	icon = "gfx/interface/icons/situation_log/situation_log_engineering.dds"
+	event_chain = earth_push
+	timelimit = 900
+	event_scope = ship_event #planet_event
+	requirements = {
+		shipclass_constructor = 1
+		
+	}
+	on_success = {
+	change_variable = {
+		which = relationship_with_earth
+		value = 40
+		}
+	owner = { 
+		country_event = { id = earth_push.63 } 
+			}
+	    }	
+	}
+	
+	on_fail = {
+	change_variable = {
+		which = relationship_with_earth
+		value = -20
+		}
+		country_event = { id = earth_push.64 } 
+	}
+}

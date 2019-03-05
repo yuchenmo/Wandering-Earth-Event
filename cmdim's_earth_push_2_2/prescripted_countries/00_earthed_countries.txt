@@ -1,0 +1,144 @@
+﻿pushed= {
+	name = "pushed"
+	adjective = "PRESCRIPTED_adjective_earth_pushed1"
+	spawn_enabled = no # yes / no / always
+	ignore_portrait_duplication = no
+	
+	ship_prefix = "PRESCRIPTED_ship_prefix_earth_pushed1"
+	
+	species = {
+		class = "HUM"
+		portrait = "human"
+		name = "PRESCRIPTED_species_name_humans1"
+		plural = "PRESCRIPTED_species_plural_humans1"
+		adjective = "PRESCRIPTED_species_adjective_humans1"
+		
+		name_list = "HUMAN1"
+		trait = "trait_great_engineers"
+		trait = "trait_nomadic"	
+		trait = "trait_wasteful"
+	}
+	
+	room = "personality_federation_builders_room"
+	
+	authority = "auth_oligarchic"
+	civics = { "civic_idealistic_foundation" "civic_technocracy" }
+	government = gov_executive_committee
+	
+	ethic = "ethic_egalitarian"
+	ethic = "ethic_pacifist"	
+	ethic = "ethic_materialist"			
+
+	flags = { earth_pushed_1  custom_start_screen }
+	
+	planet_name = "NAME_Earth"
+	
+	initializer = "alpha_centauri_initializer_1"
+	system_name = "alpha centauri"
+	
+	graphical_culture = "humanoid_01"
+	city_graphical_culture = "humanoid_01"
+	
+	empire_flag = {
+		icon= {
+			category = "earth_push"
+			file = "earth_push_logo.dds"		
+		}
+		background= {
+			category = "backgrounds"
+			file = "00_solid.dds"
+		}
+		colors={
+			"dark_blue"
+			"black"
+			"null"
+			"null"
+		}
+	}
+	
+	ruler = {
+		name = "Cixin Liu"
+		gender = male
+		portrait = "human_male_02"
+		texture = 0
+		hair = 6
+		clothes = 4
+		leader_class = ruler
+	}
+}
+
+
+humans10 = {
+	name = "humans10"
+	adjective = "PRESCRIPTED_adjective_humans1"
+	spawn_enabled = yes # yes / no / always
+	ignore_portrait_duplication = yes
+	
+	adjective = "PRESCRIPTED_adjective_earth_pushed1"
+	spawn_enabled = yes # yes / no / always
+	ignore_portrait_duplication = yes
+	
+	ship_prefix = "PRESCRIPTED_ship_prefix_earth_pushed1"
+	
+	species = {
+		class = "HUM"
+		portrait = "human"
+		name = "PRESCRIPTED_species_name_humans1"
+		plural = "PRESCRIPTED_species_plural_humans1"
+		adjective = "PRESCRIPTED_species_adjective_humans1"
+		
+		name_list = "HUMAN1"
+		trait = "trait_great_engineers"
+		trait = "trait_nomadic"	
+		trait = "trait_wasteful"
+	}
+	
+	room = "personality_federation_builders_room"
+	
+	authority = "auth_oligarchic"
+	civics = { "civic_idealistic_foundation" "civic_technocracy" }
+	government = gov_executive_committee
+	
+	ethic = "ethic_egalitarian"
+	ethic = "ethic_pacifist"	
+	ethic = "ethic_materialist"			
+
+	flags = { earth_pushed_1  custom_start_screen }
+	
+	planet_name = "NAME_Earth"
+	planet_class = "pc_continental"
+	initializer = "alpha_centauri_initializer_1"
+	system_name = "alpha centauri"
+	
+	graphical_culture = "humanoid_01"
+	city_graphical_culture = "humanoid_01"
+	
+	empire_flag = {
+		icon= {
+			category = "earth_push"
+			file = "earth_push_logo.dds"		
+		}
+		background= {
+			category = "backgrounds"
+			file = "00_solid.dds"
+		}
+		colors={
+			"dark_blue"
+			"black"
+			"null"
+			"null"
+		}
+	}
+	
+	ruler = {
+		name = "Cixin Liu"
+		gender = male
+		portrait = "human_male_03"
+		texture = 0
+		hair = 7
+		clothes = 5
+		leader_class = ruler
+		trait = "trait_ruler_explorer"
+		trait = "leader_trait_reformer"
+	}
+}

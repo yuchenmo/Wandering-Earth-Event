@@ -1,0 +1,3635 @@
+namespace = earth_push
+#SurveyPlanet
+
+#SurveyPlanet
+ship_event = {
+	id = earth_push.1
+	title = earth_push.1.name
+	desc = earth_push.1.desc
+	picture = GFX_evt_earth_push
+	location = from
+	show_sound = event_ship_bridge
+	trackable = yes
+	
+	is_triggered_only = yes
+
+	trigger = {
+		from = {
+			has_planet_flag = planet_earth_push
+		}
+		owner = {
+			NOT = { has_country_flag = observation_earth_push_country }
+			NOT = { has_country_flag = found_planet_earth_push }
+			OR = {
+				is_country_type = default
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire
+			}
+		}
+	}
+
+	immediate = {
+		
+		owner = {
+			set_country_flag = found_planet_earth_push
+		}
+		hidden_effect = {
+		every_planet = {
+				limit = { has_planet_flag = planet_earth_push }
+							
+				save_global_event_target_as = remove_earth_engine
+				
+				}
+		every_planet = {
+				limit = { has_planet_flag = sol_planet_jupiter }
+							
+				save_global_event_target_as = sol_planet_jupiter
+				
+				}	
+		every_planet = {
+				limit = { has_planet_flag = planet_earth_ground }
+							
+				save_global_event_target_as = planet_earth_ground
+				
+				}	
+				
+		every_country = {
+				limit = { 
+					AND = {
+					has_country_flag = country_earth_push
+					has_country_flag = wandering_earth_age					
+					}
+				}
+							
+				save_global_event_target_as = wandering_earth_country
+				
+				}		
+		}
+	}
+
+	option = {
+		name = earth_push.1.a
+		custom_tooltip = earth_push.1.a.tooltip
+		owner = { country_event = { id = earth_push.20 days = 3 } }
+		
+	}
+	
+	option = {
+		name = earth_push.1.b
+		custom_tooltip = earth_push.1.b.tooltip
+		owner = { country_event = { id = earth_push.21 days = 3 } }
+			
+	}
+	
+	option = {
+		name = earth_push.1.c
+		custom_tooltip = earth_push.1.c.tooltip
+		owner = { country_event = { id = earth_push.38 days = 3 } }
+				
+	}
+	
+	option = {
+	
+		name = earth_push.1.d
+		owner = { add_resource = { influence = 50 } }
+		hidden_effect = {
+		owner = { country_event = { id = earth_push.200 months = 30000 random = 1500 } }
+		owner = { set_country_flag = earth_push_ignore }
+		}
+	}
+}
+#success research earth engine
+country_event = {
+	id = earth_push.2
+	title = earth_push.2.name
+	desc = earth_push.2.desc
+	picture = GFX_evt_earth_engine_2
+	location = ROOT
+	show_sound = event_ship_bridge
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		
+	}
+	
+	option = {
+		name = earth_push.2.a
+		capital_scope = {
+		enable_special_project = {
+				name = "HEAVY_ELEMENTS_PUSH_PROJECT"
+				location = this
+				owner = root
+			}
+		}	
+	}
+	
+	option = {
+		name = earth_push.2.b
+	
+		add_modifier = {
+				modifier = "earth_push_b"
+				days = -1
+			}
+		custom_tooltip = earth_push.2.b.tooltip
+	}
+	
+	option = {
+		name = earth_push.2.c
+		owner = { country_event = { id = earth_push.21 } }
+		hidden_effect = {
+		IF = {
+				  
+				random_owned_leader = {
+					limit = {
+						OR = {
+					is_researching_area = engineering 
+					is_researching_area = physics 
+					is_researching_area = society
+						}
+					}
+					
+					add_experience = 100
+					}
+				
+			}
+		}
+	}
+	
+}
+#success Heavy elements
+country_event = {
+	id = earth_push.3
+	title = earth_push.3.name
+	desc = earth_push.3.desc
+	
+	picture = GFX_evt_physics_research
+	
+	is_triggered_only = yes
+	
+	
+	immediate = {	
+		
+	}
+	option = {
+	name = INTRIGUING
+	#custom_tooltip = earth_push.3.a.tooltip
+	owner = { 
+		give_technology = {tech = tech_heavy_elements_generator message = yes}
+		}
+	}
+}
+#fail Heavy elements
+country_event = {
+	id = earth_push.4
+	title = earth_push.4.name
+	desc = earth_push.4.desc
+	
+	picture = GFX_evt_physics_research
+	
+	is_triggered_only = yes
+	
+	
+	immediate = {	
+	
+	}
+	option = {
+	name = earth_push.4.a
+	owner = { add_resource = { influence = 50 } }
+	#custom_tooltip = earth_push.4.a.tooltip
+	hidden_effect = {
+		IF = {
+				limit = { any_owned_leader = { is_researching_area = physics } }
+				random_owned_leader = {
+					limit = {
+						OR = {
+					is_researching_area = engineering 
+					is_researching_area = physics 
+					is_researching_area = society
+						}
+					}
+					add_skill = 1
+					add_experience = 200
+					add_trait = leader_trait_maniacal
+				}
+			}
+		}
+	}
+}
+#very success Heavy elements
+country_event = {
+	id = earth_push.5
+	title = earth_push.5.name
+	desc = earth_push.5.desc
+	
+	picture = GFX_evt_physics_research
+	
+	is_triggered_only = yes
+	
+	
+	immediate = {	
+		add_resource = {
+			minerals = 300
+		}
+	}
+	option = {
+	name = INTRIGUING
+	#custom_tooltip = earth_push.5.a.tooltip
+	owner = { 
+		give_technology = {tech = tech_heavy_elements_generator message = yes}
+		add_research_option = tech_heavy_elements_generator_2
+		add_tech_progress = { tech = tech_heavy_elements_generator_2 progress = 0.25 }
+		}
+	}
+}
+
+#success research earth engine
+country_event = {
+	id = earth_push.18
+	title = earth_push.18.name
+	desc = earth_push.18.desc
+	picture = GFX_evt_earth_push
+	location = ROOT
+	show_sound = event_ship_bridge
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		
+	}
+	
+	option = {
+		name = earth_push.18.a
+		capital_scope = {
+		enable_special_project = {
+				name = "HEAVY_ELEMENTS_PUSH_PROJECT"
+				location = this
+				owner = root
+			}
+		}	
+	}
+	
+	option = {
+		name = earth_push.18.b
+		custom_tooltip = earth_push.18.b.tooltip	
+		
+		owner = { add_resource = { influence = 100 } }
+	}
+	 
+}
+
+planet_event = {
+	id = earth_push.19
+	title = OK
+	desc = OK
+	hide_window = yes
+	
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+	name = MARVELOUS
+	enable_special_project = {
+				name = "REMOVE_EARTH_ENGINE"
+				location = this
+				owner = root
+			}
+		}
+}
+
+#start research earth engine
+country_event = {
+	id = earth_push.20
+	title = earth_push.20.name
+	desc = earth_push.20.desc
+	picture = GFX_evt_physics_research
+	trigger = {
+		owner = {
+			NOT = { has_country_flag = observation_earth_push_country }
+		}
+	}
+	is_triggered_only = yes
+	
+	option = { # Special Project
+		name = earth_push.20.a
+		capital_scope = {
+			enable_special_project = {
+				name = "EARTH_PUSH_PROJECT2"
+				location = this
+				owner = root
+			}
+		}
+	}
+}
+#Intensify contradictions
+country_event = {
+	id = earth_push.21
+	title = earth_push.21.name
+	desc = earth_push.21.desc
+	picture = GFX_evt_synth_sabotage
+	trigger = {
+		owner = {
+			NOT = { has_country_flag = observation_earth_push_country }
+		}
+	}
+	is_triggered_only = yes
+	location = event_target:remove_earth_engine
+	
+	
+	immediate = {
+				
+	}		
+	
+	option = { # Special Project
+		name = earth_push.21.a
+		
+		event_target:remove_earth_engine = {
+			enable_special_project = {
+				name = "REMOVE_EARTH_ENGINE"
+				location = this
+				owner = root
+			}
+			
+			
+		}
+	}
+	option = { 
+		name = earth_push.21.b
+		owner = { add_resource = { influence = 25 } }
+	}
+	
+}
+#success Intensify contradictions
+country_event = {
+	id = earth_push.22
+	title = earth_push.22.name
+	desc = earth_push.22.desc
+	
+	picture = GFX_evt_nuclear_explosion
+	trigger = {
+		owner = {
+			NOT = { has_country_flag = observation_earth_push_country }
+		}
+	}
+	is_triggered_only = yes
+	
+	
+	immediate = {
+	hidden_effect = {
+		every_country = {
+			limit = { has_country_flag = country_earth_push }
+		
+			add_modifier = { modifier = earth_push_rebel_forces days = 365 } 
+			}
+		}	
+		
+	}
+	
+	option = {
+	name = earth_push.22.a
+	custom_tooltip = earth_push.22.a.tooltip
+	
+	}	
+	
+	option = { # Special Project
+		name = earth_push.22.b
+		custom_tooltip = earth_push.22.b.tooltip
+		trigger = {
+			NOR = {
+				has_country_flag = earth_push_research_2
+				
+			}
+		}
+		event_target:remove_earth_engine = {
+			enable_special_project = { #EARTH PUSH
+				name = "EARTH_PUSH_PROJECT"
+				location = this
+				owner = root
+			}
+		}
+	}
+}
+
+#earth be invaded
+country_event = {
+	id = earth_push.23
+	title = earth_push.23.name
+	desc = earth_push.23.desc
+	picture = GFX_evt_earth_engine
+	is_triggered_only = yes
+	
+	trigger = {
+		FROM = { has_country_flag = country_earth_push  }
+		#is_country_type = default
+		#is_gestalt = no
+		#trigger = {
+		#	NOR = {
+		#		#has_country_flag = earth_push_research_2
+		#		has_country_flag = earth_push_research
+		#		has_country_flag = heavy_elements_push_research
+		#	}
+		#}
+	}
+	
+	immediate = {
+	owner = {
+		set_country_flag = earth_be_invaded
+	   }
+	}
+	option = {
+	name = earth_push.23.a
+	
+	event_target:remove_earth_engine = {
+			enable_special_project = {
+				name = "REMOVE_EARTH_ENGINE_2A"
+				location = this
+				owner = root
+			}
+		}
+	}
+	option = {
+	name = earth_push.23.b
+	
+	event_target:remove_earth_engine = {
+			enable_special_project = {
+				name = "REMOVE_EARTH_ENGINE_2B"
+				location = this
+				owner = root
+			}
+		}
+	}
+}
+#give number
+country_event = {
+	id = earth_push.24
+	title = earth_push.24.name
+	desc = earth_push.24.desc
+	picture = GFX_evt_news_room
+	is_triggered_only = yes
+	
+	trigger = {
+
+	}
+	
+	immediate = {
+		event_target:remove_earth_engine = {
+		change_pc = pc_arctic
+		set_planet_entity = {
+			entity = "continental_planet_earth_push_2_entity"
+			}
+		}
+	}
+	option = {
+	name = earth_push.24.a
+	
+	random_list = {
+			2 = { owner = { add_resource = { minerals = 4500 } } }
+			8 = { owner = { add_resource = { minerals = 4000 } } }
+			20 = { owner = { add_resource = { minerals = 3550 } } }
+			20 = { owner = { add_resource = { minerals = 2850 } } }
+			50 = { owner = { add_resource = { minerals = 2200 } } }
+		}
+	
+	custom_tooltip = earth_push.24.a.tooltip
+	hidden_effect = {
+		event_target:remove_earth_engine = {
+			remove_building = building_primitive_capital2
+			remove_building = building_earth_push2
+			remove_building = building_earth_push2
+			remove_building = building_earth_push3
+			remove_building = building_earth_push
+			
+			}
+		}
+	}
+}
+
+#give deposit
+country_event = {
+	id = earth_push.25
+	title = earth_push.25.name
+	desc = earth_push.25.desc
+	picture = GFX_evt_earth_engine_5
+	is_triggered_only = yes
+	
+	trigger = {
+
+	}
+	
+	immediate = {
+		event_target:remove_earth_engine = {
+		change_pc = pc_arctic
+		set_planet_entity = {
+			entity = "continental_planet_earth_push_2_entity"
+			}
+		}
+	}
+	option = {
+	name = earth_push.25.a
+	
+	event_target:remove_earth_engine = {
+	random_list = {
+				5 = { 
+					add_deposit = d_earth_engine_mine
+					add_deposit = d_earth_engine_mine
+					add_deposit = d_earth_engine_mine
+					add_deposit = d_earth_engine_mine
+					} 
+				35 = { 
+					add_deposit = d_earth_engine_mine
+					add_deposit = d_earth_engine_mine
+					add_deposit = d_earth_engine_mine
+					} 
+				60 = { 
+					add_deposit = d_earth_engine_mine
+					add_deposit = d_earth_engine_mine
+					} 
+				}
+		}
+	custom_tooltip = earth_push.25.a.tooltip	
+	hidden_effect = {
+		event_target:remove_earth_engine = {
+			remove_building = building_primitive_capital2
+			remove_building = building_earth_push2
+			remove_building = building_earth_push2
+			remove_building = building_earth_push3
+			remove_building = building_earth_push
+			
+			}
+		}
+	}
+}
+
+
+country_event = {
+	id = earth_push.38
+	title = earth_push.38.name
+	desc = earth_push.38.desc
+	picture = GFX_evt_physics_research
+	trigger = {
+		owner = {
+			NOT = { has_country_flag = observation_earth_push_country }
+		}
+	}
+	is_triggered_only = yes
+	
+	option = { # Special Project
+		name = earth_push.38.a
+		capital_scope = {
+			enable_special_project = {
+				name = "EARTH_COMMUNICATION_PROJECT"
+				location = this
+				owner = root
+			}
+		}
+	}
+}
+#success talk
+country_event = {
+	id = earth_push.39
+	title = earth_push.39.name
+	desc = earth_push.39.desc
+	picture = GFX_evt_physics_research
+	trigger = {
+		owner = {
+			NOT = { has_country_flag = observation_earth_push_country }
+		}
+	}
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	option = {
+		name = earth_push.39.a
+		
+		owner = { country_event = { id = earth_push.40 } }
+	}
+}
+
+#Talk to Earth
+country_event = {
+	id = earth_push.40
+	title = earth_push.40.name
+	desc = earth_push.40.desc
+	trigger = {
+		owner = {
+			NOT = { has_country_flag = observation_earth_push_country }
+		}
+	}
+	trackable = yes
+	
+	diplomatic = yes
+	
+	is_triggered_only = yes
+
+	immediate = {
+		save_global_event_target_as = My_Country_target
+	}
+	
+	picture_event_data = {
+		portrait = event_target:wandering_earth_country
+		planet_background = event_target:remove_earth_engine
+		graphical_culture = event_target:remove_earth_engine
+		city_level = event_target:remove_earth_engine
+		room = event_target:remove_earth_engine
+	}
+	
+	option = {
+		name = earth_push.40.a
+		response_text = earth_push.40.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = earth_push.40.b
+		response_text = earth_push.40.b.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = earth_push.40.c
+		response_text = earth_push.40.c.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = earth_push.40.d
+		response_text = earth_push.40.d.response
+		set_country_flag = help_earth_ftl
+		capital_scope = {
+			enable_special_project = {
+				name = "EARTH_FTL_HELP_PROJECT"
+				location = this
+				owner = root
+			}
+		}
+	}
+	option = {
+		name = earth_push.40.e
+		response_text = earth_push.40.e.response
+		set_country_flag = help_earth_but_dependent
+		custom_tooltip = earth_push_no_next.tooltip
+	}
+	option = {
+		name = earth_push.40.f
+		response_text = earth_push.40.f.response
+		set_country_flag = help_earth_move
+		owner = { country_event = { id = earth_push.60 days = 7 }  }
+	}
+	option = {
+		name = earth_push.40.j
+		response_text = earth_push.40.j.response
+		set_country_flag = help_and_give_tech
+		custom_tooltip = earth_push_no_next.tooltip
+		#owner = { country_event = { id = earth_push.60 days = 7 }  }
+	}
+	option = {
+		name = earth_push.40.k
+		response_text = earth_push.40.k.response
+		set_country_flag = help_and_transaction
+		custom_tooltip = earth_push_no_next.tooltip
+		#owner = { country_event = { id = earth_push.60 days = 7 }  }
+	}
+	option = {
+		name = earth_push.40.g
+		response_text = earth_push.40.g.response
+		owner = { country_event = { id = earth_push.42 days = 2 }  }
+	}
+	option = {
+		name = earth_push.40.i
+		response_text = earth_push.40.i.response
+		owner = { country_event = { id = earth_push.42 days = 2 }  }
+	}
+	option = {
+		name = earth_push.40.h
+		response_text = earth_push.40.h.response
+		owner = { country_event = { id = earth_push.42 days = 2 }  }
+	}
+}
+#ftl success
+country_event = {
+	id = earth_push.41
+	title = earth_push.41.name
+	desc = earth_push.41.desc
+	picture = GFX_evt_physics_research
+	trigger = {
+		owner = {
+			NOT = { has_country_flag = observation_earth_push_country }
+		}
+	}
+	is_triggered_only = yes
+	
+	option = {
+		name = earth_push.41.a
+		hidden_effect = {
+		random_list = {
+			0 = {
+				owner = { country_event = { id = earth_push.42 }  }
+			}
+			30 = {#no rebel
+				owner = { country_event = { id = earth_push.43 days = 360 }  }
+			}
+			70 = {#rebel
+				owner = { country_event = { id = earth_push.44 days = 360 }  }
+				}
+			}	
+		}
+	}
+}
+#hostile with earth
+country_event = {
+	id = earth_push.42
+	title = earth_push.42.name
+	desc = earth_push.42.desc
+	picture = GFX_evt_earth_rocket_launching
+	trigger = {
+		owner = {
+			NOT = { has_country_flag = observation_earth_push_country }
+		}
+	}
+	is_triggered_only = yes
+	immediate = {
+	set_faction_hostility = { target = My_Country_target set_hostile = yes  }	
+	event_target:remove_earth_engine = {
+	add_modifier = { modifier = earth_push_martial_law days = 1800 } 
+	}
+	event_target:wandering_earth_country = {
+		add_modifier = { modifier = earth_push_emergency_mobilization days = 1800 } 
+			owner = {	
+				create_leader = {
+					class = admiral
+					species = owner_main_species
+					name = random
+					skill = 3
+					traits = {
+						trait = random
+						trait = leader_trait_aggressive
+					}
+				}
+			}
+		}	
+		create_fleet = {
+			name = "Coalition Government Fleet II" 
+				effect = {
+						set_owner = event_target:wandering_earth_country
+							while = {
+								count = 12
+								create_ship = {
+								name = "Tohsaka Rin"
+								design = "NAME_Coalition_Government_Corvette_V"
+								}			
+							}
+							while = {
+								count = 12
+								create_ship = {
+								name = "Tohsaka Tokiomi"
+								design = "NAME_Coalition_Government_Corvette_V"
+								}			
+							}
+								
+						set_location = event_target:remove_earth_engine
+						assign_leader = last_created_leader
+						set_aggro_range = 200
+					}
+			}
+		}
+	option = {
+		name = earth_push.42.a
+		
+	}
+}
+#no rebel
+country_event = {
+	id = earth_push.43
+	title = earth_push.43.name
+	desc = earth_push.43.desc
+	picture = GFX_evt_earth_rocket_launching
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	event_target:wandering_earth_country = {
+		owner = {country_event = { id = earth_push.53 days = 120 }}
+		owner = {	
+			create_leader = {
+					class = admiral
+					species = owner_main_species
+					name = random
+					skill = 5
+					traits = {
+						trait = leader_trait_gale_speed
+						trait = leader_trait_aggressive
+					}
+				}
+			}
+	}	
+	create_fleet = {
+			name = "Coalition Government Fleet II" 
+				effect = {
+						set_owner = event_target:wandering_earth_country
+							while = {
+								count = 12
+								create_ship = {
+								name = "Tohsaka Rin"
+								design = "NAME_Coalition_Government_Corvette_II"
+								}			
+							}
+							while = {
+								count = 12
+								create_ship = {
+								name = "Tohsaka Tokiomi"
+								design = "NAME_Coalition_Government_Corvette_III"
+								}			
+							}
+							while = {
+								count = 3
+								create_ship = {
+								name = "Neptune"
+								design = "NAME_Coalition_Government_Corvette_IV"
+								}			
+							}
+							while = {
+								count = 3
+								create_ship = {
+								name = "Neptune"
+								design = "NAME_Coalition_Government_Corvette_IV"
+								}			
+							}
+								
+						set_location = event_target:remove_earth_engine
+						assign_leader = last_created_leader
+					}
+			}
+		}
+	}
+	option = {
+		name = earth_push.43.a
+		
+	}
+}
+
+#has rebel
+country_event = {
+	id = earth_push.44
+	title = earth_push.44.name
+	desc = earth_push.44.desc
+	picture = GFX_evt_small_space_battle
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		#event_target:wandering_earth_country = {
+		#	every_owned_fleet = { 
+		#	destroy_fleet = this 
+		#	}		
+		#}
+		
+		create_species = {
+						name = Human
+						plural = Humans
+						class = "HUM"
+						portrait = "human"
+						traits = {
+							trait = "trait_pc_arctic_preference"
+							trait = "trait_agrarian"
+							trait = "trait_adaptive"	
+							trait = "trait_wasteful"
+							
+						}
+					}
+		create_country = {
+						name = "Ground Doctrine Of Human"
+						authority = random
+						day_zero_contact = no
+						civics = {
+							civic = civic_warrior_culture 
+							civic = civic_distinguished_admiralty
+						}
+						species = last_created
+						ethos = {
+							ethic = "ethic_authoritarian"
+							#ethic = "ethic_xenophobe"	
+							ethic = "ethic_fanatic_militarist"			
+						}
+						flag = {
+							icon = {
+								category = "pirate"
+								file = "flag_pirate_6.dds"
+							}
+							background= {
+								category = "backgrounds"
+								file = "circle.dds"
+							}
+							colors={
+								"black"
+								"black"
+								"null"
+								"null"
+							}
+						}
+						type = primitive_rebel
+					}
+					
+			last_created_country = {
+				save_global_event_target_as = Ground_Doctrine
+				set_country_flag = country_earth_rebel
+				}
+			event_target:Ground_Doctrine = {
+				set_faction_hostility = { set_hostile = yes }
+			}			
+		create_fleet = {
+			name = "Ground Doctrine Fleet" 
+				effect = {
+						set_owner = last_created_country
+							while = {
+								count = 50 #35-37 is best
+								create_ship = {
+								name = "Ground Doctrine"
+								design = "NAME_Coalition_Government_Corvette_II"
+								}			
+							}	
+						set_location = event_target:sol_planet_jupiter
+						set_fleet_stance = aggressive
+						set_aggro_range = 800	
+					}
+				
+			}
+		event_target:remove_earth_engine = {
+		
+			while = {
+						count = 8
+						create_army = {
+						name = "Ground Doctrine Forces"
+						owner = last_created
+						species = last_created
+						type = "earth_rebel_army"
+						}				
+					}
+			}
+		create_fleet = {
+			name = "Coalition Government Fleet II" 
+				effect = {
+						set_owner = event_target:wandering_earth_country
+							while = {
+								count = 6 #10
+								create_ship = {
+								name = "Tohsaka Rin"
+								design = "NAME_Coalition_Government_Corvette_II"
+								}			
+							}
+							while = {
+								count = 6 #10
+								create_ship = {
+								name = "Tohsaka Tokiomi"
+								design = "NAME_Coalition_Government_Corvette_III"
+								}			
+							}
+							while = {
+								count = 3 #5
+								create_ship = {
+								name = "Neptune"
+								design = "NAME_Coalition_Government_Corvette_IV"
+								}			
+							}
+								
+						set_location = event_target:remove_earth_engine
+					}
+			}
+	}
+	
+	option = {
+		name = earth_push.44.a
+		
+	}
+}
+
+country_event = {
+	id = earth_push.45
+	title = earth_push.45.name
+	desc = earth_push.45.desc
+	picture = GFX_evt_physics_research
+	trigger = {
+		this = {
+			has_country_flag = country_earth_push
+		}
+		from = {
+			
+		}
+	}
+	is_triggered_only = yes
+	
+	immediate = {
+	event_target:wandering_earth_country = {
+		destroy_country = yes
+					
+		}
+	}
+	option = {
+		name = earth_push.45.a
+		event_target:My_Country_target = {
+			 country_event = { id = earth_push.50 }
+		}			
+	}
+}
+#rebel to be default I
+country_event = {
+	id = earth_push.46
+	title = earth_push.46.name
+	desc = earth_push.46.desc
+	picture = GFX_evt_space_station
+	trigger = {
+		this = {
+			has_country_flag = country_earth_rebel
+		}
+		
+	}
+	is_triggered_only = yes
+	#fire_only_once = yes
+	
+	immediate = {
+			
+		owner = {
+			
+			country_event = { id = earth_push.47 }
+			
+			#country_event = { id = earth_push.25 }
+			add_resource = {
+				energy = 40000
+				minerals = 10000 # enough for a spaceport and then some
+				alloys = 5000
+				consumer_goods = 5000
+				volatile_motes = 500
+				exotic_gases = 500
+				rare_crystals = 500
+				influence = 300
+			}
+			add_resource = {
+				energy = 40000
+				
+			}
+
+			give_technology = {tech = tech_heavy_elements_generator }
+			give_technology = {tech = tech_heavy_elements_generator_2 }
+			give_technology = {tech = tech_destroyers }
+			give_technology = {tech = tech_cruisers }
+			give_technology = {tech = tech_ship_armor_3 }
+			give_technology = {tech = tech_ship_armor_2 }
+			give_technology = {tech = tech_powered_exoskeletons }
+			give_technology = {tech = tech_space_mining_1 }
+			give_technology = {tech = tech_space_mining_2 }
+			give_technology = {tech = tech_mining_1 }
+			give_technology = {tech = tech_mining_2 }
+			give_technology = {tech = tech_mining_3 }
+			give_technology = {tech = tech_alloys_1 }
+			give_technology = {tech = tech_alloys_2 }
+			give_technology = {tech = tech_luxuries_1 }
+			give_technology = {tech = tech_luxuries_2 }
+			give_technology = {tech = tech_mass_drivers_4 }
+			give_technology = {tech = tech_cold_fusion_power }
+			give_technology = {tech = tech_fusion_power }
+			give_technology = {tech = tech_thrusters_3 }
+			
+			
+			
+		}
+		owner = {
+			create_leader = {
+				class = scientist
+				name = random
+				skill = 4
+				species = owner_main_species
+				}
+			}
+		owner = {	
+			create_leader = {
+					class = admiral
+					species = owner_main_species
+					name = random
+					skill = 5
+					traits = {
+						trait = leader_trait_gale_speed
+						trait = leader_trait_aggressive
+					}
+				}
+			}
+		#science
+		create_fleet = {
+			effect = {
+				set_owner = event_target:Ground_Doctrine
+
+				create_ship = {
+					name = random
+					random_existing_design = science
+				}
+
+				set_fleet_stance = evasive				
+				#set_location = prev.capital_star
+				set_location = event_target:remove_earth_engine
+				
+				owner = {
+					create_leader = {
+						class = scientist
+						sub_type = survey
+						name = random
+						species = owner_main_species
+					}
+				}
+				set_leader = last_created_leader
+			}			
+		}
+			
+		#constructor
+			create_fleet = {
+				effect = {
+					set_owner = event_target:Ground_Doctrine
+				
+					create_ship = {
+						name = random
+						random_existing_design = constructor
+					}
+				
+					set_fleet_stance = evasive
+					set_location = event_target:remove_earth_engine
+				}
+			}
+		
+	}
+	option = {
+		name = earth_push.46.a
+		event_target:My_Country_target = {
+			country_event = { id = earth_push.51 }
+		}
+	}		
+}
+
+
+#rebel to be default II
+country_event = {
+	id = earth_push.47
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_country_flag = country_earth_rebel
+		
+	}
+
+	immediate = {
+		owner = {country_event = { id = earth_push.48 days = 5 }}
+		remove_country_flag = early_space_age
+		#remove_country_flag = country_earth_rebel
+		set_country_flag = primitives_can_into_space
+		set_country_type = default
+		change_country_flag = {
+				icon = {
+					category = "human"
+					file = "flag_human_6.dds"
+					}
+				background= {
+					category = "backgrounds"
+					file = "circle.dds"
+					}
+					colors={
+					"brown"
+					"brown"
+					"null"
+					"null"
+				}
+			}
+		if = {
+			limit = { is_species_class = MAM }
+			set_graphical_culture = mammalian_01
+		}
+		if = {
+			limit = { is_species_class = REP }
+			set_graphical_culture = reptilian_01
+		}
+		if = {
+			limit = { is_species_class = AVI }
+			set_graphical_culture = avian_01
+		}
+		if = {
+			limit = { is_species_class = ART }
+			set_graphical_culture = arthropoid_01
+		}
+		if = {
+			limit = { is_species_class = MOL }
+			set_graphical_culture = molluscoid_01
+		}
+		if = {
+			limit = { is_species_class = FUN }
+			set_graphical_culture = fungoid_01
+		}
+		if = {
+			limit = { is_species_class = PLANT }
+			set_graphical_culture = plantoid_01
+		}		
+		change_government = {
+			authority = random
+			civics = random
+		}
+		set_name = random
+		if = {
+			limit = {
+				home_planet = {
+					has_observation_outpost = yes
+				}
+			}
+			home_planet = {
+				observation_outpost_owner = {
+					country_event = { id = primitive.17 }
+				}
+			}
+		}
+		add_resource = {
+			energy = 5000
+			minerals = 10000 # enough for a spaceport and then some
+		}
+		add_resource = { influence = 300 }
+		capital_scope = {
+			clear_blockers = yes
+			while = {
+				limit = { 
+					num_pops < 18
+					#free_housing > 0
+				}
+				create_pop = {
+					species = owner
+				}
+			}
+			
+
+			
+			remove_all_armies = yes
+			solar_system = {
+				if = {
+					limit = {
+						NOT = { exists = starbase }
+					}
+					create_starbase = {
+						size = starbase_outpost
+						owner = root
+					}
+				}
+				else_if = {
+					limit = {
+						starbase = {
+							NOT = { owner = { is_same_value = root } }
+						}
+					}	
+					starbase = {
+						owner = { country_event = { id = primitive.180 days = 10 } }
+					}
+				}
+			}				
+		}
+	}
+}
+
+#rebel to be default III
+country_event = {
+	id = earth_push.48
+	hide_window = yes
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		has_country_flag = country_earth_rebel
+		
+	}
+
+	immediate = {
+		add_opinion_modifier = { 
+				who = event_target:My_Country_target
+				modifier = opinion_enlightened_rebel 
+			}
+		add_modifier = { modifier = earth_push_all_added_1 days = 18000 } 
+		add_modifier = { modifier = earth_push_all_added_2 days = -1 } 
+		remove_country_flag = country_earth_rebel
+		event_target:remove_earth_engine = {
+			add_deposit = d_frozen_gas_lake					
+			add_deposit = d_frozen_gas_lake
+			add_deposit = d_fungal_forest
+			add_deposit = d_fungal_caves
+			add_deposit = d_mineral_fields
+			add_district = district_city
+			add_district = district_city
+			add_district = district_city
+			add_district = district_city
+			add_district = district_farming
+			add_district = district_farming
+			add_district = district_farming
+			add_district = district_mining
+			add_district = district_mining
+			add_district = district_generator
+			add_district = district_generator
+			add_building = building_capital
+			add_building = building_research_lab_1
+			add_building = building_foundry_1
+			add_building = building_factory_1
+			
+			while = {
+						count = 10
+						create_army = {
+						name = "Ground Doctrine Forces"
+						owner = event_target:Ground_Doctrine
+						species = owner_main_species
+						type = "earth_rebel_army"
+						}				
+					}
+			}
+	}
+}
+
+
+country_event = {
+	id = earth_push.51
+	title = earth_push.51.name
+	desc = earth_push.51.desc
+	picture = GFX_evt_space_station
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	
+	
+	immediate = {
+	
+	}
+	option = {
+		name = earth_push.51.a			
+	}
+	option = {
+		name = earth_push.51.b			
+	}
+	option = {
+		name = earth_push.51.c		
+	}
+}
+
+#no rebel to be default I
+country_event = {
+	id = earth_push.53
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		
+	}
+
+	immediate = {
+		
+		owner = {
+			country_event = { id = earth_push.54 days = 5 }
+			#country_event = { id = earth_push.47 }
+			country_event = { id = earth_push.55 days = 15 }
+			#country_event = { id = earth_push.25 }
+			add_resource = {
+				energy = 40000
+				minerals = 10000 # enough for a spaceport and then some
+				alloys = 5000
+				consumer_goods = 5000
+				volatile_motes = 500
+				exotic_gases = 500
+				rare_crystals = 500
+				influence = 300
+			}
+			add_resource = {
+				energy = 40000
+				
+			}
+
+			give_technology = {tech = tech_heavy_elements_generator }
+			give_technology = {tech = tech_heavy_elements_generator_2 }
+			give_technology = {tech = tech_destroyers }
+			give_technology = {tech = tech_cruisers }
+			give_technology = {tech = tech_ship_armor_3 }
+			give_technology = {tech = tech_ship_armor_2 }
+			give_technology = {tech = tech_powered_exoskeletons }
+			give_technology = {tech = tech_space_mining_1 }
+			give_technology = {tech = tech_space_mining_2 }
+			give_technology = {tech = tech_mining_1 }
+			give_technology = {tech = tech_mining_2 }
+			give_technology = {tech = tech_mining_3 }
+			give_technology = {tech = tech_alloys_1 }
+			give_technology = {tech = tech_alloys_2 }
+			give_technology = {tech = tech_luxuries_1 }
+			give_technology = {tech = tech_luxuries_2 }
+			give_technology = {tech = tech_mass_drivers_4 }
+			give_technology = {tech = tech_cold_fusion_power }
+			give_technology = {tech = tech_fusion_power }
+			give_technology = {tech = tech_thrusters_3 }
+			
+			
+			
+		}
+		owner = {
+			create_leader = {
+				class = scientist
+				name = random
+				skill = 4
+				species = owner_main_species
+				}
+			}
+		owner = {	
+			create_leader = {
+					class = admiral
+					species = owner_main_species
+					name = random
+					skill = 5
+					traits = {
+						trait = leader_trait_gale_speed
+						trait = leader_trait_aggressive
+					}
+				}
+			}
+		#science
+		create_fleet = {
+			effect = {
+				set_owner = event_target:wandering_earth_country
+
+				create_ship = {
+					name = random
+					random_existing_design = science
+				}
+
+				set_fleet_stance = evasive				
+				#set_location = prev.capital_star
+				set_location = event_target:remove_earth_engine
+				
+				owner = {
+					create_leader = {
+						class = scientist
+						sub_type = survey
+						name = random
+						species = owner_main_species
+					}
+				}
+				set_leader = last_created_leader
+			}			
+		}
+			
+		#constructor
+			create_fleet = {
+				effect = {
+					set_owner = event_target:wandering_earth_country
+				
+					create_ship = {
+						name = random
+						random_existing_design = constructor
+					}
+				
+					set_fleet_stance = evasive
+					set_location = event_target:remove_earth_engine
+				}
+			}
+		remove_country_flag = early_space_age
+		#remove_country_flag = country_earth_rebel
+		set_country_flag = primitives_can_into_space
+		set_country_type = default
+		
+		if = {
+			limit = { is_species_class = MAM }
+			set_graphical_culture = mammalian_01
+		}
+		if = {
+			limit = { is_species_class = REP }
+			set_graphical_culture = reptilian_01
+		}
+		if = {
+			limit = { is_species_class = AVI }
+			set_graphical_culture = avian_01
+		}
+		if = {
+			limit = { is_species_class = ART }
+			set_graphical_culture = arthropoid_01
+		}
+		if = {
+			limit = { is_species_class = MOL }
+			set_graphical_culture = molluscoid_01
+		}
+		if = {
+			limit = { is_species_class = FUN }
+			set_graphical_culture = fungoid_01
+		}
+		if = {
+			limit = { is_species_class = PLANT }
+			set_graphical_culture = plantoid_01
+		}		
+		change_government = {
+			authority = random
+			#civics = random
+		}
+		#set_name = random
+		if = {
+			limit = {
+				home_planet = {
+					has_observation_outpost = yes
+				}
+			}
+			home_planet = {
+				observation_outpost_owner = {
+					country_event = { id = primitive.17 }
+				}
+			}
+		}
+		add_resource = {
+			energy = 5000
+			minerals = 10000 # enough for a spaceport and then some
+		}
+		add_resource = { influence = 300 }
+		capital_scope = {
+			clear_blockers = yes
+			while = {
+				limit = { 
+					num_pops < 18
+					#free_housing > 0
+				}
+				create_pop = {
+					species = owner
+				}
+			}
+			
+			add_deposit = d_frozen_gas_lake					
+			add_deposit = d_frozen_gas_lake
+			add_deposit = d_fungal_caves
+			add_deposit = d_fungal_caves
+			add_deposit = d_fungal_caves
+			add_district = district_city
+			add_district = district_city
+			add_district = district_city
+			add_district = district_city
+			add_district = district_farming
+			add_district = district_farming
+			add_district = district_farming
+			add_district = district_mining
+			add_district = district_mining
+			add_district = district_generator
+			add_district = district_generator
+			add_building = building_capital
+			add_building = building_research_lab_1
+			add_building = building_foundry_1
+			add_building = building_factory_1
+			
+			remove_all_armies = yes
+			solar_system = {
+				if = {
+					limit = {
+						NOT = { exists = starbase }
+					}
+					create_starbase = {
+						size = starbase_outpost
+						owner = root
+					}
+				}
+				else_if = {
+					limit = {
+						starbase = {
+							NOT = { owner = { is_same_value = root } }
+						}
+					}	
+					starbase = {
+						owner = { country_event = { id = primitive.180 days = 10 } }
+					}
+				}
+			}				
+		}
+	}
+}
+
+#no rebel to be default II
+country_event = {
+	id = earth_push.54
+	hide_window = yes
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		
+	}
+
+	immediate = {
+		
+		add_modifier = { modifier = earth_push_all_added_1 days = 18000 } 
+		add_modifier = { modifier = earth_push_all_added_2 days = -1 } 
+		remove_country_flag = country_earth_rebel
+		event_target:remove_earth_engine = {
+			while = {
+						count = 10
+						create_army = {
+						name = random
+						owner = event_target:wandering_earth_country
+						species = owner_main_species
+						type = "assault_army"
+						}				
+					}
+			}
+	}
+}
+
+country_event = {
+	id = earth_push.55
+	title = earth_push.55.name
+	desc = earth_push.55.desc
+	picture = GFX_evt_space_station
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	
+	
+	immediate = {
+	
+	}
+	option = {
+		name = earth_push.55.a			
+	}
+	option = {
+		name = earth_push.55.b			
+	}
+}
+
+#give missions to you
+country_event = {
+	id = earth_push.60
+	title = earth_push.60.name
+	desc = earth_push.60.desc
+	is_triggered_only = yes
+	trackable = yes
+	diplomatic = yes
+	trigger = {
+		owner = {
+			NOT = { has_country_flag = observation_earth_push_country }
+		}
+	}
+	
+	picture_event_data = {
+		portrait = event_target:wandering_earth_country
+		planet_background = event_target:remove_earth_engine
+		graphical_culture = event_target:remove_earth_engine
+		city_level = event_target:remove_earth_engine
+		room = event_target:remove_earth_engine
+	}
+	
+	immediate = {
+	country_event = { id = earth_push.89 days = 1 } 
+		set_variable = {
+			which = num_helped_earth
+			value = 0
+		}
+		set_variable = {
+			which = relationship_with_earth
+			value = 0
+		}
+	}
+	option = {
+		name = earth_push.60.a	
+		response_text = earth_push.60.a.response
+		custom_tooltip = earth_push.60.a.tooltip
+		is_dialog_only = yes
+		change_variable = {
+				which = num_helped_earth
+				value = 1
+			}
+		owner = { set_country_flag =  help_earth_move_a }
+		allow = { 
+		NOT = { has_country_flag = help_earth_move_a } 
+		
+		}
+		hidden_effect = {
+		change_variable = {
+				which = relationship_with_earth
+				value = 5
+			}
+		}
+		event_target:remove_earth_engine = { 
+			enable_special_project = {
+				name = "HELP_EARTH_MOVE_A"
+				location = this
+				owner = root
+				}
+			}
+		}
+	option = {
+		name = earth_push.60.b	
+		response_text = earth_push.60.b.response
+		custom_tooltip = earth_push.60.b.tooltip
+		is_dialog_only = yes
+		change_variable = {
+				which = num_helped_earth
+				value = 1
+			}
+		owner = { set_country_flag =  help_earth_move_b }
+		allow = { NOT = { has_country_flag = help_earth_move_b } }
+		hidden_effect = {
+		change_variable = {
+				which = relationship_with_earth
+				value = 5
+			}
+		}
+			
+			event_target:remove_earth_engine = {		
+			enable_special_project = {
+				name = "HELP_EARTH_MOVE_B"
+				location = this
+				owner = root
+				}
+			}
+		}
+			
+	option = {
+		name = earth_push.60.c	
+		response_text = earth_push.60.c.response
+		custom_tooltip = earth_push.60.c.tooltip
+		is_dialog_only = yes
+		change_variable = {
+				which = num_helped_earth
+				value = 1
+			}
+		owner = { set_country_flag = help_earth_move_c }
+		allow = { NOT = { has_country_flag = help_earth_move_c } }
+		hidden_effect = {
+		change_variable = {
+				which = relationship_with_earth
+				value = 10
+			}
+		}
+		event_target:remove_earth_engine = {
+			enable_special_project = {
+				name = "HELP_EARTH_MOVE_C"
+				location = this
+				owner = root
+				}
+			}
+		}	
+	option = { #for more
+		name = earth_push.60.d	
+		response_text = earth_push.60.d.response
+		
+		allow = {
+		
+			check_variable = {
+				which = num_helped_earth
+				value >= 1
+				}
+			
+		}
+		country_event = { id = earth_push.70 days = 14 } 
+	}
+	
+	option = { #help and end
+		name = earth_push.60.e
+		response_text = earth_push.60.e.response
+		
+		allow = {
+		
+				check_variable = {
+					which = num_helped_earth
+					value >= 1
+					}
+				
+			}
+			
+		country_event = { id = earth_push.75 days = 14 }
+	}
+	option = { #no help but end
+		name = earth_push.60.f
+		response_text = earth_push.60.f.response
+		
+		allow = {
+		
+			check_variable = {
+				which = num_helped_earth
+				value <= 0
+				}
+			
+		}	
+		hidden_effect = {
+		change_variable = {
+				which = relationship_with_earth
+				value = -60
+			}
+		}
+		country_event = { id = earth_push.80 days = 14 } 
+	}		
+
+}
+
+country_event = {
+	id = earth_push.61
+	title = earth_push.61.name
+	desc = earth_push.61.desc
+	picture = GFX_evt_earth_engine_5
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		owner = {
+			NOT = { has_country_flag = observation_earth_push_country }
+		}
+	}
+	immediate = {
+	owner = { set_country_flag = help_earth_move_finish_a }
+	}
+	option = {
+		name = earth_push.61.a
+		custom_tooltip = earth_push.61.a.tooltip
+	}
+	option = {
+		name = earth_push.61.b
+		custom_tooltip = earth_push.61.b.tooltip
+	}
+}
+
+country_event = {
+	id = earth_push.62
+	title = earth_push.62.name
+	desc = earth_push.62.desc
+	picture = GFX_evt_earth_engine_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		owner = {
+			NOT = { has_country_flag = observation_earth_push_country }
+		}
+	}
+	immediate = {
+	owner = { set_country_flag = help_earth_move_finish_b }
+	}
+	option = {
+		name = earth_push.62.a
+		custom_tooltip = earth_push.62.a.tooltip
+	}
+	option = {
+		name = earth_push.62.b
+		custom_tooltip = earth_push.62.b.tooltip
+	}
+}
+
+country_event = {
+	id = earth_push.63
+	title = earth_push.63.name
+	desc = earth_push.63.desc
+	picture = GFX_evt_earth_engine
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	immediate = {
+	owner = { set_country_flag = help_earth_move_finish_c }
+	}
+	option = {
+		name = earth_push.63.a
+		custom_tooltip = earth_push.63.a.tooltip
+	}
+	option = {
+		name = earth_push.63.b
+		custom_tooltip = earth_push.63.b.tooltip
+	}
+}
+
+country_event = {
+	id = earth_push.64
+	title = earth_push.64.name
+	desc = earth_push.64.desc
+	picture = GFX_evt_ship_in_orbit
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	owner = { set_country_flag = help_earth_move_fail }
+	}
+	
+	
+	immediate = {
+	
+	}
+	option = {
+		name = earth_push.64.a
+		custom_tooltip = earth_push.64.a.tooltip
+	}
+}
+
+#more help earth
+country_event = {
+	id = earth_push.70
+	title = earth_push.70.name
+	desc = earth_push.70.desc
+	picture = GFX_evt_space_station
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		owner = {
+			NOT = { has_country_flag = observation_earth_push_country }
+		}
+	}
+	
+	trackable = yes
+	diplomatic = yes
+	trigger = {
+		
+	}
+	
+	picture_event_data = {
+		portrait = event_target:wandering_earth_country
+		planet_background = event_target:remove_earth_engine
+		graphical_culture = event_target:remove_earth_engine
+		city_level = event_target:remove_earth_engine
+		room = event_target:remove_earth_engine
+	}
+	
+	immediate = {
+		
+	}
+	option = {
+		name = earth_push.70.a	
+		response_text = earth_push.70.a.response
+		is_dialog_only = yes
+		hidden_effect = {
+		change_variable = {
+				which = relationship_with_earth
+				value = 30
+			}
+		}
+		change_variable = {
+				which = num_helped_earth
+				value = 1
+			}
+		owner = { set_country_flag =  help_earth_move_d }
+		allow = { 
+		NOT = { has_country_flag = help_earth_move_d } 
+		resource_stockpile_compare = {
+				resource = minerals
+				value >= 5000
+			}
+		}
+		owner = { add_resource = { minerals = -5000 } }
+	}
+	option = {
+		name = earth_push.70.b	
+		response_text = earth_push.70.b.response
+		is_dialog_only = yes
+		hidden_effect = {
+		change_variable = {
+				which = relationship_with_earth
+				value = 30
+			}
+		}
+		change_variable = {
+				which = num_helped_earth
+				value = 1
+			}
+		owner = { set_country_flag =  help_earth_move_e }
+		allow = { 
+		NOT = { has_country_flag = help_earth_move_e } 
+			resource_stockpile_compare = {
+				resource = food
+				value >= 5000
+				}
+			}
+		owner = { add_resource = { food = -5000 } }	
+		}
+	option = {
+		name = earth_push.70.c	
+		#country_event = { id = earth_push.90 days = 14 } 
+		
+	}
+	
+}
+
+
+country_event = {
+	id = earth_push.80
+	title = earth_push.80.name
+	desc = earth_push.80.desc
+	picture = GFX_evt_space_station
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	
+	
+	immediate = {
+	
+	}
+	option = {
+		name = earth_push.80.a			
+	}
+	
+}
+
+country_event = {
+	id = earth_push.89
+	title = ok
+	desc = ok
+	picture = GFX_evt_space_station
+	hide_window = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	
+	}
+	
+	
+	immediate = {
+	set_variable = {
+			which = num_random_earth_event
+			value = 5
+		}
+	}
+	
+}
+
+country_event = {
+	id = earth_push.90
+	title = earth_push.90.name
+	desc = { #random things1
+		
+			text = earth_push.90.desc.1
+	}
+	desc = { #random things2
+			text = earth_push.90.desc.2
+	}
+	desc = { #random things3
+			text = earth_push.90.desc.3
+	}
+	picture = GFX_evt_society_research
+	
+	trigger = {
+	AND = {
+		owner = {
+			NOT = { has_country_flag = observation_earth_push_country }
+		}
+		AND = {
+		check_variable = {
+			which = num_random_earth_event
+			value < 6
+			}
+		check_variable = {
+			which = num_random_earth_event
+			value >= 0
+			}	
+		}
+		OR = {
+			owner = { has_country_flag = help_earth_move_fail }
+			owner = { has_country_flag = help_earth_move_finish_a }
+			owner = { has_country_flag = help_earth_move_finish_b }
+			owner = { has_country_flag = help_earth_move_finish_c }
+			}
+		}
+	}
+	mean_time_to_happen = { months = 36 }
+	
+	immediate = {
+	
+	}
+	option = {
+		name = earth_push.90.a	
+		owner = { country_event = { id = earth_push.91 days = 360 random = 100 } }
+	}
+	option = {
+		name = earth_push.90.b		
+		owner = { add_resource = { influence = 20 } }
+	}
+	option = {
+		name = earth_push.90.c		
+		owner = { add_resource = { influence = 20 } }
+		trigger = {
+		check_variable = {
+			which = num_random_earth_event
+			value < 3
+			}
+		}
+	}
+	
+}
+
+
+country_event = {
+	id = earth_push.91
+	title = earth_push.91.name
+	desc = { #bad things
+		
+		trigger = {
+			owner = {
+				NOT = { has_country_flag = observation_earth_push_country }
+			}
+			check_variable = {
+				which = relationship_with_earth
+				value < 0
+			}
+		}
+		
+		text = earth_push.91.desc.bad1 
+		#text = earth_push.91.desc.bad2 
+		
+	}
+	desc = { #bad things
+		
+		trigger = {
+			check_variable = {
+				which = relationship_with_earth
+				value < 0
+			}
+		}
+		
+		text = earth_push.91.desc.bad2 
+	}
+	desc = { #bad things
+		
+		trigger = {
+			check_variable = {
+				which = relationship_with_earth
+				value < 0
+			}
+		}
+		
+		text = earth_push.91.desc.bad3 
+	}
+	desc = { #good things
+		text = earth_push.91.desc.good1
+		trigger = {
+			check_variable = {
+				which = relationship_with_earth
+				value >= 0
+			}
+		}
+	}
+	desc = { #good things
+		text = earth_push.91.desc.good2
+		trigger = {
+			check_variable = {
+				which = relationship_with_earth
+				value >= 0
+			}
+		}
+	}
+	desc = { #good things
+		text = earth_push.91.desc.good3
+		trigger = {
+			check_variable = {
+				which = relationship_with_earth
+				value >= 0
+			}
+		}
+	}
+	desc = { #good things
+		text = earth_push.91.desc.good4
+		trigger = {
+			check_variable = {
+				which = relationship_with_earth
+				value >= 0
+			}
+		}
+	}
+	picture = GFX_evt_society_research
+	#fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		
+	}
+	
+	immediate = {
+	
+	change_variable = {
+			which = num_random_earth_event
+			value = -1
+		}
+	}
+	option = {
+	name = earth_push.91.a	
+		random_list = {
+			20 = {
+				owner = { add_resource = { influence = -50 } }
+				owner = { add_modifier = { modifier = earth_push_fail_society_4  days = 720 } }
+				}
+			20 = {
+				owner = { add_resource = { influence = -50 } }
+					add_monthly_resource_mult = {
+					resource = unity
+					value = -60
+					}
+				}
+			60 = {	
+				owner = { add_modifier = { modifier = earth_push_fail_society_4  days = 720 } }
+					add_monthly_resource_mult = {
+					resource = unity
+					value = -50
+					}
+				}
+			}
+		trigger = {
+			
+			check_variable = {
+					which = relationship_with_earth
+					value < -50
+				}
+			
+		}
+	}
+	option = {
+		name = earth_push.91.b	
+		random_list = {
+			20 = {
+				owner = { add_resource = { influence = -20 } }
+				owner = { add_modifier = { modifier = earth_push_fail_society_2  days = 510 } }	
+				}
+			20 = {
+				owner = { add_resource = { influence = -20 } }
+					add_monthly_resource_mult = {
+					resource = unity
+					value = -30
+					}
+				}
+			60 = {
+				owner = { add_modifier = { modifier = earth_push_fail_society_3  days = 720 } }
+					add_monthly_resource_mult = {
+					resource = unity
+					value = -30
+					}
+				}
+			}
+		
+		
+		trigger = {
+				AND = {
+				check_variable = {
+					which = relationship_with_earth
+					value < -25
+					}
+				check_variable = {
+					which = relationship_with_earth
+					value >= -50
+					}
+				
+			}
+		}
+	}
+	option = {
+		name = earth_push.91.c		
+		random_list = {
+			20 = {
+				owner = { add_resource = { influence = -10 } }
+				owner = { add_modifier = { modifier = earth_push_fail_society_2  days = 360 }	}
+				}
+			20 = {
+				owner = { add_resource = { influence = -10 } }
+					add_monthly_resource_mult = {
+					resource = unity
+					value = -10
+					}
+				}
+			60 = {
+				owner = { add_modifier = { modifier = earth_push_fail_society_1  days = 360 } }
+					add_monthly_resource_mult = {
+					resource = unity
+					value = -10
+					}
+				}
+			}
+		
+		
+		trigger = {
+			
+				AND = {
+				check_variable = {
+					which = relationship_with_earth
+					value < 0
+					}
+				check_variable = {
+					which = relationship_with_earth
+					value >= -25
+					}
+				
+			}
+		}
+	}
+	option = {
+		name = earth_push.91.d		
+		random_list = {
+			20 = {
+				add_monthly_resource_mult = {
+					resource = society_research
+					value = 6
+					}
+				}
+			20 = {
+					add_monthly_resource_mult = {
+					resource = unity
+					value = 15
+					}
+				}
+			60 = {
+					add_monthly_resource_mult = {
+					resource = society_research
+					value = 3
+					}
+				}
+			}
+		
+		trigger = {
+			AND = {
+				check_variable = {
+					which = relationship_with_earth
+					value < 30
+					}
+				check_variable = {
+					which = relationship_with_earth
+					value >= 0
+				}
+			}	
+		}
+	}
+	option = {
+		name = earth_push.91.e		
+		random_list = {
+			20 = {
+				add_monthly_resource_mult = {
+					resource = society_research
+					value = 20
+					}
+					
+				}
+			20 = {
+				owner = { add_resource = { influence = 60 } }
+					add_monthly_resource_mult = {
+					resource = unity
+					value = 40
+					}
+				}
+			60 = {
+					add_monthly_resource_mult = {
+					resource = society_research
+					value = 10
+					}
+				}
+			}
+			
+		
+		trigger = {
+			AND = {
+				check_variable = {
+					which = relationship_with_earth
+					value < 60
+					}
+				check_variable = {
+					which = relationship_with_earth
+					value >= 30
+				}
+			}	
+		}
+	}
+	option = {
+		name = earth_push.91.f		
+		random_list = {
+			20 = {
+				add_monthly_resource_mult = {
+					resource = society_research
+					value = 30
+					}
+					
+				}
+			20 = {
+					add_monthly_resource_mult = {
+					resource = unity
+					value = 60
+					}
+				}
+			60 = {
+					add_monthly_resource_mult = {
+					resource = society_research
+					value = 20
+					}
+				}
+			}
+		
+		trigger = {
+			AND = {
+				check_variable = {
+					which = relationship_with_earth
+					value < 90
+					}
+				check_variable = {
+					which = relationship_with_earth
+					value >= 60
+				}
+			}	
+		}
+	}
+	option = {
+		name = earth_push.91.g		
+		random_list = {
+			20 = {
+				add_monthly_resource_mult = {
+					resource = society_research
+					value = 40
+					}
+					
+				}
+			20 = {
+					add_monthly_resource_mult = {
+					resource = unity
+					value = 60
+					}
+				}
+			60 = {
+					add_monthly_resource_mult = {
+					resource = society_research
+					value = 30
+					}
+				}
+			}
+		
+		trigger = {
+			
+				check_variable = {
+					which = relationship_with_earth
+					value >= 90
+				}
+				
+		}
+	}	
+}
+
+country_event = {
+	id = earth_push.92
+	title = ok
+	desc = ok
+	hide_window = yes
+	picture = GFX_evt_society_research
+	
+	trigger = {
+		OR = {
+			owner = { has_country_flag = help_earth_move_fail }
+			owner = { has_country_flag = help_earth_move_finish_a }
+			owner = { has_country_flag = help_earth_move_finish_b }
+			owner = { has_country_flag = help_earth_move_finish_c }
+			}
+		
+	}
+	mean_time_to_happen = { months = 12 }
+	
+	immediate = {
+	owner = { country_event = {id = earth_push.200 days = 116800 random = 7200 } }
+	}
+	
+	
+}
+
+
+
+#Changing orbit to other sun
+country_event = {
+	id = earth_push.200
+	title = earth_push.200.name
+	desc = { #ignore
+		text = earth_push.200.desc.1
+		trigger = {
+			owner = { has_country_flag = earth_push_ignore }
+		}
+	}
+	desc = { #help
+		text = earth_push.200.desc.2
+		trigger = {
+			OR = {
+			owner = { has_country_flag = help_earth_move_fail }
+			owner = { has_country_flag = help_earth_move_finish_a }
+			owner = { has_country_flag = help_earth_move_finish_b }
+			owner = { has_country_flag = help_earth_move_finish_c }
+			}
+		}
+	}
+	fire_only_once = yes
+	picture = GFX_evt_news_room
+	is_triggered_only = yes
+	
+	trigger = {
+
+	}
+	
+	immediate = {
+	
+		every_planet = {
+			limit = { has_planet_flag = planet_earth_push_to_be }
+			
+			save_global_event_target_as = earth_push_to_be
+			
+		}
+		hidden_effect = {
+			event_target:remove_earth_engine = {
+				change_pc = pc_barren
+				set_planet_size = 7
+			}
+			event_target:earth_push_to_be = {
+				
+				change_pc = pc_continental
+				set_planet_entity = {
+					entity = "continental_planet_earth_entity"
+				}
+				set_planet_size = 20
+				clear_deposits = yes
+				random_list = {
+				# Early Space Age
+				100 = {
+					create_species = {
+						name = Human
+						plural = Humans
+						class = "HUM"
+						portrait = "human"
+						homeworld = THIS
+						traits = {
+							trait = "trait_pc_continental_preference"
+							trait = "trait_great_engineers"
+							trait = "trait_nomadic"	
+							trait = "trait_wasteful"
+							
+						}
+					}
+					create_country = {
+						name = random
+						authority = random
+						day_zero_contact = no
+						civics = {
+							civic = civic_increasing_urbanization
+							civic = civic_atmospheric_pollution
+						}
+						species = last_created
+						ethos = {
+							ethic = "ethic_egalitarian"
+							ethic = "ethic_pacifist"	
+							ethic = "ethic_materialist"			
+						}
+						flag = {
+							icon = {
+								category = "earth_push"
+								file = "earth_push_logo.dds"
+							}
+							background= {
+								category = "backgrounds"
+								file = "circle.dds"
+							}
+							colors={
+								"blue"
+								"blue"
+								"null"
+								"null"
+							}
+						}
+						type = primitive
+					}
+					last_created_country = {
+						set_graphical_culture = industrial_01
+						#set_country_flag = early_space_age
+						#set_country_flag = humans_early_space_age					
+						#set_primitive_age = early_space_age
+						set_country_flag = country_earth_push
+						set_country_flag = wandering_earth_age
+						set_primitive_age = wandering_earth_age
+
+					}
+					last_created_country = {
+						save_global_event_target_as = country_earth_moved_primitive
+						
+					}
+					set_owner = last_created_country
+					event_target:country_earth_moved_primitive = {
+					owner = { country_event = {	 id = earth_push.53  days = 100 } }
+					}
+					create_primitive_blockers = no
+#					while = {
+#						count = 5
+#						create_army = {
+#						name = "Coalition Government Forces"
+#						owner = last_created
+#						species = last_created
+#						type = "postatomic_army"
+#						}				
+#					}
+					
+
+					create_fleet = {
+						name = "Piloteer" 
+						effect = {
+							set_owner = last_created_country
+							create_ship = {
+								name = "Piloteer"
+								design = "NAME_Space_Station"
+							}
+							
+							set_location = PREV
+						}
+					}
+					
+					create_fleet = {
+						name = "Coalition Government Fleet" 
+						effect = {
+							set_owner = last_created_country
+								while = {
+									count = 10
+									create_ship = {
+									name = "Sonogami Rinne"
+									design = "NAME_Coalition_Government_Corvette"
+										}			
+									}
+								
+							set_location = PREV
+						}
+					}
+					while = {
+						count = 17
+						create_pop = {
+							species = last_created
+						}					
+					}
+					
+					
+					add_building = building_earth_push_culture
+					
+					add_deposit = d_earth_ruined_city
+					add_deposit = d_earth_ruined_city
+					add_deposit = d_earth_massive_glacier
+					add_deposit = d_earth_massive_glacier
+					add_deposit = d_earth_massive_glacier																
+					
+					add_deposit = d_frozen_gas_lake					
+					
+					add_deposit = d_fungal_caves
+					add_deposit = d_earth_engine_mine
+					add_deposit = d_earth_engine_mine
+					add_deposit = d_earth_engine_mine
+					add_deposit = d_earth_engine_mine
+					last_created_country = {
+						capital_scope = { set_name = "Sol III" }
+						}			
+					}
+			
+				}
+			}
+		}
+	}
+	option = {
+	name = earth_push.200.a
+	trigger = {
+			owner = { has_country_flag = earth_push_ignore }
+		}
+	}
+	option = {
+	name = earth_push.200.b
+	trigger = {
+			OR = {
+			owner = { has_country_flag = help_earth_move_fail }
+			owner = { has_country_flag = help_earth_move_finish_a }
+			owner = { has_country_flag = help_earth_move_finish_b }
+			owner = { has_country_flag = help_earth_move_finish_c }
+			}
+		}
+	}
+}
+
+
+
+# Prevent observation (HIDDEN)
+planet_event = {
+	id = earth_push.950
+	hide_window = yes
+	
+	trigger = {
+		has_observation_outpost = yes
+		
+		observation_outpost_owner = {
+			NOT = { has_ethic = ethic_gestalt_consciousness }
+			AND = { 
+				NOT = { has_country_flag = rogue_scientist_chain }
+				is_ai = no
+			}
+		}
+		owner = {
+			is_country_type = primitive
+			OR = {
+				
+				has_country_flag = wandering_earth_age
+			}
+		}
+		NOT = { has_planet_flag = earth_push_prevent_observation }
+	}
+	
+	mean_time_to_happen = {
+		months = 10
+	}
+	
+	immediate = {
+		
+		
+	owner = {
+		set_country_flag = found_planet_earth_push
+	}
+	hidden_effect = {			
+		every_country = {
+				limit = { 
+					AND = {
+					has_country_flag = country_earth_push
+					has_country_flag = wandering_earth_age					
+					}
+				}
+							
+				save_global_event_target_as = wandering_earth_country_2
+				
+				}		
+		}
+	
+		observation_outpost_owner = {
+			limit = { 
+				
+				
+			}
+			country_event = { id = earth_push.951 }
+		}
+		set_planet_flag = earth_push_prevent_observation
+		
+		
+	}
+}
+
+country_event = {
+	id = earth_push.951
+	title = earth_push.951.name
+	desc = earth_push.951.desc
+	picture = GFX_evt_society_research
+	
+	location = FROM
+	
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				100 = { country_event = { id = earth_push.955 days = 30 random = 5 } }
+				
+			}
+		}
+	}
+	option = {
+		name = earth_push.951.a
+		
+	}
+}
+
+country_event = {
+	id = earth_push.952
+	title = earth_push.952.name
+	desc = earth_push.952.desc
+	trackable = yes
+	
+	diplomatic = yes
+	
+	is_triggered_only = yes
+
+	immediate = {
+		save_global_event_target_as = My_Country_target_2
+		
+		event_target:wandering_earth_country_2 = {
+		
+		owner = { country_event = { id = earth_push.42 days = 5 }  }
+		owner = { country_event = { id = earth_push.53 days = 100 }  }
+		}
+		
+		event_target:My_Country_target_2 = {
+		owner = { country_event = { id = earth_push.954 days = 98 }  }
+		}
+	}
+	
+	picture_event_data = {
+		portrait = event_target:wandering_earth_country
+		planet_background = event_target:remove_earth_engine
+		graphical_culture = event_target:remove_earth_engine
+		city_level = event_target:remove_earth_engine
+		room = event_target:remove_earth_engine
+	}
+	
+	option = {
+		name = earth_push.952.a
+		response_text = earth_push.952.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = earth_push.952.b
+		response_text = earth_push.952.b.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = earth_push.952.c
+		
+	}
+}
+
+country_event = {
+	id = earth_push.954
+	title = earth_push.954.name
+	desc = earth_push.954.desc
+	picture = GFX_evt_earth_large_explosion
+	 
+	location = FROM
+	
+	is_triggered_only = yes
+	immediate = {
+	
+	
+	event_target:wandering_earth_country_2 = {
+			change_government = {
+					civics = {
+						civic = civic_warrior_culture 
+						civic = civic_distinguished_admiralty
+					}
+						
+					ethos = {
+						#ethic = "ethic_authoritarian"
+						ethic = "ethic_egalitarian"
+						ethic = "ethic_xenophobe"	
+						ethic = "ethic_fanatic_militarist"			
+					}
+				}
+		#constructor
+			create_fleet = {
+				effect = {
+					set_owner = event_target:wandering_earth_country_2
+				
+					create_ship = {
+						name = random
+						random_existing_design = constructor
+					}
+					set_fleet_stance = evasive
+					set_location = event_target:remove_earth_engine
+				}
+			}
+		capital_scope.solar_system.starbase = {
+					set_owner = event_target:wandering_earth_country_2
+			}
+		add_opinion_modifier = { 
+				who = event_target:My_Country_target_2
+				modifier = opinion_observation_us
+			}
+		}
+	}
+	event_target:My_Country_target_2 = {
+		
+		set_country_flag = observation_earth_push_country
+	}
+	option = {
+		name = earth_push.954.a
+		custom_tooltip = earth_push.954.a.tooltip
+	}
+}
+
+country_event = {
+	id = earth_push.955
+	title = earth_push.955.name
+	desc = earth_push.955.desc
+	picture = GFX_evt_physics_research
+	
+	location = FROM
+	
+	is_triggered_only = yes
+	immediate = {
+	
+	}
+	option = {
+		name = earth_push.955.a
+		owner = { country_event = { id = earth_push.952 days = 1 }  }
+		
+		
+	}
+}
+
+
+
+#Avoid the same country in different periods
+country_event = {
+	id = earth_push.998
+	title = ok
+	desc = ok
+	hide_window = yes
+	picture = GFX_evt_earth_push
+	fire_only_once = yes
+	trigger = {
+	}
+	mean_time_to_happen = { days = 2}
+	
+	immediate = {	
+		every_planet = {
+			limit = { has_planet_flag = planet_earth_push }				
+			add_anomaly = EARTH_PUSH_FOUND
+		}	
+	}
+}
+
+country_event = {
+	id = earth_push.999
+	title = ok
+	desc = ok
+	hide_window = yes
+	picture = GFX_evt_earth_push
+	fire_only_once = yes
+	trigger = {
+	AND = {
+		NOT = { has_country_flag = earth_pushed_1 }	
+		NOT = { has_global_flag = earth_push_event_no_conflict }
+		}
+	}
+	mean_time_to_happen = { days = 1}
+	
+	immediate = {	
+	
+		event_target:remove_earth_event_default = {
+		add_anomaly = EARTH_PUSH_FOUND
+		}	
+	}
+}
+
+country_event = {
+	id = earth_push.1000
+	title = ok
+	desc = ok
+	hide_window = yes
+	picture = GFX_evt_earth_push
+	fire_only_once = yes
+	trigger = {
+		AND = {
+			has_global_flag = earth_push_event_no_conflict
+			has_country_flag = earth_pushed_1
+		}
+	}
+
+	#mean_time_to_happen = { days = 2 }
+	immediate = {	
+		every_planet = {
+			limit = { has_planet_flag = planet_earth_push }				
+			save_global_event_target_as = remove_earth_event_2
+			}
+		event_target:remove_earth_event_2 = {
+		change_pc = pc_barren
+		set_planet_size = 8
+		remove_planet_flag = planet_earth_push
+		prevent_anomaly = yes
+		}
+	}
+}
+
+
+
+#Menu
+country_event = {
+	id = earth_push.1001
+	title = earth_push.1001.name
+	desc = earth_push.1001.desc
+	
+	picture = GFX_evt_earth_push
+	is_triggered_only = yes
+	fire_only_once = yes
+	#mean_time_to_happen = { days = 1 }
+	trigger = {
+		AND = {
+			owner = { is_ai = no }
+			OR = {
+				any_system = { any_system_planet= { has_planet_flag = prescripted_ideal } }
+				solar_system = { has_star_flag = sol_system }
+				solar_system = { has_star_flag = deneb_system }
+			}
+		}
+	}
+	
+	immediate = {	
+	
+	every_country = {
+		limit = { has_country_flag = earth_pushed_1 }
+		save_global_event_target_as = earth_pushed_country
+		}	
+	every_planet = {
+			limit = { has_planet_flag = planet_earth_push }				
+			save_global_event_target_as = remove_earth_event_default
+			}
+	}
+	option = { #set default
+		name = earth_push.1001.a
+		custom_tooltip = earth_push.1001.a.tooltip
+		hidden_effect = {
+			event_target:remove_earth_event_default = {
+			add_anomaly = EARTH_PUSH_FOUND
+			}
+		}
+	}
+	option = { #no primitive
+		name = earth_push.1001.b
+		custom_tooltip = earth_push.1001.b.tooltip
+		set_global_flag = earth_push_event_no_conflict
+		hidden_effect = {
+			event_target:earth_pushed_country = {
+				country_event = { id = earth_push.1000 }
+				country_event = { id = earth_push.999 }
+			}
+		}
+	}
+	option = { #no pushed
+		name = earth_push.1001.c
+		custom_tooltip = earth_push.1001.c.tooltip
+		set_global_flag = earth_push_event_no_conflict
+		hidden_effect = {
+			event_target:remove_earth_event_default = {
+			add_anomaly = EARTH_PUSH_FOUND
+			}
+			
+			event_target:earth_pushed_country = {
+				destroy_country = yes
+			}
+		}
+	}
+	option = { #all not allow
+		name = earth_push.1001.d
+		custom_tooltip = earth_push.1001.d.tooltip
+		set_global_flag = earth_push_event_no_conflict
+		hidden_effect = {
+			event_target:remove_earth_event_default = {
+
+				change_pc = pc_barren
+				set_planet_size = 8
+				remove_planet_flag = planet_earth_push
+				prevent_anomaly = yes
+				
+			}
+			
+			event_target:earth_pushed_country = {
+				destroy_country = yes
+			}
+		}
+	}
+}
+
+
+
+####
+#test event
+####
+# Primitive Civilization Conquered - Player info
+country_event = {
+	id = earth.test
+	title = action.14.name
+	desc = { #Non-Purge Policy Regular Empires
+		text = action.14.desc
+		trigger = {
+			NOR = {
+				has_ethic = ethic_gestalt_consciousness
+				event_target:conquered_primitive_species = {
+					has_citizenship_type = { country = root type = citizenship_purge }
+				}
+			}
+		}
+	}
+	desc = { #Purge Policy Regular Empires
+		text = action.14.desc.purge
+		trigger = {
+			NOT = { has_ethic = ethic_gestalt_consciousness }
+			event_target:conquered_primitive_species = {
+				has_citizenship_type = { country = root type = citizenship_purge }
+			}
+		}
+	}
+	desc = { #Servitors
+		text = action.14.desc.serv
+		trigger = { 
+			has_civic = civic_machine_servitor
+		}
+	}
+	desc = { #Assimilators
+		text = action.14.desc.assim
+		trigger = { 
+			has_civic = civic_machine_assimilator
+		}
+	}
+	desc = { #Exterminators
+		text = action.14.desc.term
+		trigger = { 
+			has_civic = civic_machine_terminator
+		}
+	}
+	desc = { #Purge Policy MIs
+		text = action.14.desc.mach.purge
+		trigger = {
+			has_authority = auth_machine_intelligence
+			event_target:conquered_primitive_species = {
+				has_citizenship_type = { country = root type = citizenship_purge }
+			}
+			NOR = {
+				has_civic = civic_machine_servitor
+				has_civic = civic_machine_assimilator
+				has_civic = civic_machine_terminator
+			}
+		}
+	}
+	desc = { #Enslave Policy MIs
+		text = action.14.desc.mach.slave
+		trigger = {
+			has_authority = auth_machine_intelligence
+			event_target:conquered_primitive_species = {
+				has_citizenship_type = { country = root type = citizenship_slavery }
+			}
+			NOR = {
+				has_civic = civic_machine_servitor
+				has_civic = civic_machine_assimilator
+				has_civic = civic_machine_terminator
+			}
+		}
+	}
+	desc = { #Purge Policy Hiveminds
+		text = action.14.desc.hive.purge
+		trigger = {
+			has_authority = auth_hive_mind
+			event_target:conquered_primitive_species = {
+				has_citizenship_type = { country = root type = citizenship_purge }
+			}
+		}
+	}
+	desc = { #Enslave Policy Hiveminds
+		text = action.14.desc.hive.slave
+		trigger = {
+			has_authority = auth_hive_mind
+			event_target:conquered_primitive_species = {
+				has_citizenship_type = { country = root type = citizenship_slavery }
+			}
+		}
+	}
+
+	picture = GFX_evt_ground_combat
+	show_sound = event_alien_signal
+	location = event_target:conquered_primitive_country
+
+	is_triggered_only = yes
+
+	immediate = {
+		event_target:conquered_primitive_country = {
+			if = {
+				limit = { num_pops <= 5 }
+				add_district = district_city
+				add_district = district_farming
+				break = yes
+			}
+			if = {
+				limit = {
+					num_pops >= 5 
+					num_pops <= 10 
+				}
+				add_district = district_city
+				add_district = district_farming
+				break = yes
+			}
+			if = {
+				limit = {
+					num_pops >= 10 
+					num_pops <= 15 
+				}
+				add_district = district_city
+				add_district = district_city
+				add_district = district_farming
+				add_district = district_mining
+				break = yes
+			}
+			if = {
+				limit = {
+					num_pops >= 15 
+					num_pops <= 20 
+				}
+				add_district = district_city
+				add_district = district_city
+				add_district = district_farming
+				add_district = district_farming
+				add_district = district_mining
+				add_district = district_mining
+				break = yes
+			}
+			if = {
+				limit = {
+					num_pops >= 20 
+					num_pops <= 25 
+				}
+				add_district = district_city
+				add_district = district_city
+				add_district = district_city
+				add_district = district_farming
+				add_district = district_farming
+				add_district = district_mining
+				add_district = district_mining
+				break = yes
+			}
+			if = {
+				limit = {
+					num_pops >= 25 
+					num_pops <= 30 
+				}
+				add_district = district_city
+				add_district = district_city
+				add_district = district_city
+				add_district = district_city
+				add_district = district_farming
+				add_district = district_farming
+				add_district = district_mining
+				add_district = district_mining
+				add_district = district_generator
+				break = yes
+			}
+			if = {
+				limit = {
+					num_pops >= 30
+					num_pops <= 35 
+				}
+				add_district = district_city
+				add_district = district_city
+				add_district = district_city
+				add_district = district_city
+				add_district = district_city
+				add_district = district_farming
+				add_district = district_farming
+				add_district = district_mining
+				add_district = district_mining
+				add_district = district_generator
+				break = yes
+			}
+		}
+	}
+	
+	option = {
+		name = action.14.a.phobe 
+		custom_tooltip = action.14.a.tooltip
+		trigger = {
+			OR = {
+				has_ethic = ethic_fanatic_xenophobe
+				has_ethic = ethic_xenophobe
+			}
+		}
+	}
+	option = {
+		name = action.14.a.military
+		custom_tooltip = action.14.a.tooltip
+		trigger = {
+			OR = {
+				has_ethic = ethic_fanatic_militarist
+				has_ethic = ethic_militarist
+			}
+			NOR = {
+				has_ethic = ethic_fanatic_xenophobe
+				has_ethic = ethic_xenophobe
+			}			
+		}
+	}
+	option = {
+		name = action.14.a.spirit
+		custom_tooltip = action.14.a.tooltip
+		trigger = {
+			OR = {
+				has_ethic = ethic_fanatic_spiritualist
+				has_ethic = ethic_spiritualist
+			}
+			NOR = {
+				has_ethic = ethic_fanatic_xenophobe
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_militarist
+				has_ethic = ethic_militarist
+			}
+		}
+	}
+	option = {
+		name = action.14.a.material
+		custom_tooltip = action.14.a.tooltip
+		trigger = {
+			OR = {
+				has_ethic = ethic_fanatic_materialist
+				has_ethic = ethic_materialist
+			}
+			NOR = {
+				has_ethic = ethic_fanatic_xenophobe
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_militarist
+				has_ethic = ethic_militarist
+			}
+		}
+	}
+	option = {
+		name = action.14.a
+		custom_tooltip = action.14.a.tooltip
+		trigger = {
+			NOR = {
+				has_ethic = ethic_fanatic_xenophobe
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_militarist
+				has_ethic = ethic_militarist
+				has_ethic = ethic_fanatic_spiritualist
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_materialist
+				has_ethic = ethic_materialist
+				has_authority = auth_machine_intelligence
+			}
+		}
+	}
+	option = {
+		name = action.14.a.serv 
+		custom_tooltip = action.14.a.tooltip
+		trigger = {
+			has_civic = civic_machine_servitor
+		}
+	}
+	option = {
+		name = action.14.a.assim 
+		custom_tooltip = action.14.a.tooltip
+		trigger = {
+			has_civic = civic_machine_assimilator
+		}
+	}
+	option = {
+		name = action.14.a.term 
+		custom_tooltip = action.14.a.tooltip
+		trigger = {
+			has_civic = civic_machine_terminator
+		}
+	}
+	option = {
+		name = action.14.a.mach 
+		custom_tooltip = action.14.a.tooltip
+		trigger = {
+			has_authority = auth_machine_intelligence
+			NOR = {
+				has_civic = civic_machine_servitor
+				has_civic = civic_machine_assimilator
+				has_civic = civic_machine_terminator
+			}
+		}
+	}
+}
+
+country_event = {
+	id = earth_push_test.3
+	hide_window = yes
+
+	trigger = {
+		is_country_type = primitive
+		has_country_flag = early_space_age
+		OR = {
+			AND = {
+				exists = from
+				from = {
+					OR = {
+						is_country_type = default
+						is_country_type = awakened_fallen_empire
+					}
+				}
+			}
+			AND = {
+				NOT = { has_country_flag = recently_advanced }
+				years_passed > 25
+				exists = home_planet
+				home_planet = { has_observation_outpost = no }			
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 100
+
+		modifier = {
+			factor = 0.6
+			has_country_flag = acquired_tech
+		}
+	}
+
+	immediate = {
+		remove_country_flag = early_space_age
+		set_country_flag = primitives_can_into_space
+		set_country_type = default
+		change_country_flag = random
+		if = {
+			limit = { is_species_class = MAM }
+			set_graphical_culture = mammalian_01
+		}
+		if = {
+			limit = { is_species_class = REP }
+			set_graphical_culture = reptilian_01
+		}
+		if = {
+			limit = { is_species_class = AVI }
+			set_graphical_culture = avian_01
+		}
+		if = {
+			limit = { is_species_class = ART }
+			set_graphical_culture = arthropoid_01
+		}
+		if = {
+			limit = { is_species_class = MOL }
+			set_graphical_culture = molluscoid_01
+		}
+		if = {
+			limit = { is_species_class = FUN }
+			set_graphical_culture = fungoid_01
+		}
+		if = {
+			limit = { is_species_class = PLANT }
+			set_graphical_culture = plantoid_01
+		}		
+		change_government = {
+			authority = random
+			civics = random
+		}
+		set_name = random
+		if = {
+			limit = {
+				home_planet = {
+					has_observation_outpost = yes
+				}
+			}
+			home_planet = {
+				observation_outpost_owner = {
+					country_event = { id = primitive.17 }
+				}
+			}
+		}
+		add_resource = {
+			energy = 500
+			minerals = 1000 # enough for a spaceport and then some
+		}
+		add_resource = { influence = 300 }
+		capital_scope = {
+			clear_blockers = yes
+			while = {
+				limit = { 
+					num_pops < 8
+					#free_housing > 0
+				}
+				create_pop = {
+					species = owner
+				}
+			}
+			remove_building = building_primitive_farm
+			remove_building = building_primitive_factory
+			remove_building = building_primitive_capital
+			remove_building = building_urban_dwellings
+			add_district = district_city
+			add_district = district_city
+			add_district = district_city
+			add_district = district_city
+			add_district = district_farming
+			add_district = district_farming
+			add_district = district_farming
+			add_district = district_mining
+			add_district = district_mining
+			add_district = district_generator
+			add_district = district_generator
+			add_building = building_capital
+			add_building = building_research_lab_1
+			add_building = building_foundry_1
+			add_building = building_factory_1
+			
+			remove_all_armies = yes
+			solar_system = {
+				if = {
+					limit = {
+						NOT = { exists = starbase }
+					}
+					create_starbase = {
+						size = starbase_outpost
+						owner = root
+					}
+				}
+				else_if = {
+					limit = {
+						starbase = {
+							NOT = { owner = { is_same_value = root } }
+						}
+					}	
+					starbase = {
+						owner = { country_event = { id = primitive.180 days = 10 } }
+					}
+				}
+			}				
+		}
+		random_owned_ship = {
+			limit = { is_ship_size = primitive_space_station }
+			fleet = { destroy_fleet = THIS }
+		}
+	}
+}
+
+
+country_event = {
+	id = earth_push_test.40
+	title = earth_push_test.40.name
+	desc = earth_push_test.40.desc
+	trackable = yes
+	
+	diplomatic = yes
+	
+	is_triggered_only = yes
+
+	immediate = {
+		save_global_event_target_as = My_Country_target
+	}
+	
+	picture_event_data = {
+		portrait = event_target:wandering_earth_country
+		planet_background = event_target:remove_earth_engine
+		graphical_culture = event_target:remove_earth_engine
+		city_level = event_target:remove_earth_engine
+		room = event_target:remove_earth_engine
+	}
+	
+	option = {
+		name = earth_push.40.a
+		response_text = earth_push.40.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = earth_push.40.b
+		response_text = earth_push.40.b.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = earth_push.40.c
+		response_text = earth_push.40.c.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = earth_push.40.d
+		response_text = earth_push.40.d.response
+		set_country_flag = help_earth_ftl
+		capital_scope = {
+			enable_special_project = {
+				name = "EARTH_FTL_HELP_PROJECT"
+				location = this
+				owner = root
+			}
+		}
+	}
+	option = {
+		name = earth_push.40.e
+		response_text = earth_push.40.e.response
+		set_country_flag = help_earth_but_dependent
+	}
+	option = {
+		name = earth_push.40.f
+		response_text = earth_push.40.f.response
+		set_country_flag = help_earth_move
+		owner = { country_event = { id = earth_push.60 days = 7 }  }
+	}
+	option = {
+		name = earth_push.40.g
+		response_text = earth_push.40.g.response
+		owner = { country_event = { id = earth_push.42 days = 2 }  }
+	}
+	option = {
+		name = earth_push.40.h
+		response_text = earth_push.40.h.response
+		owner = { country_event = { id = earth_push.42 days = 2 }  }
+	}
+}
+
+# Missing Scientist (HIDDEN)
+planet_event = {
+	id = earth_push_test.10
+	hide_window = yes
+	
+	trigger = {
+		has_observation_outpost = yes
+		observation_outpost = { has_mission = passive_observation }
+		observation_outpost_owner = {
+			NOT = { has_ethic = ethic_gestalt_consciousness }
+			AND = { 
+				NOT = { has_country_flag = rogue_scientist_chain }
+				is_ai = no
+			}
+		}
+		owner = {
+			is_country_type = primitive
+			OR = {
+				has_country_flag = stone_age
+				has_country_flag = bronze_age
+				has_country_flag = iron_age
+				has_country_flag = late_medieval_age
+				has_country_flag = renaissance_age
+				has_country_flag = steam_age
+			}
+		}
+		NOT = { has_planet_flag = missing_scientist_planet }
+	}
+	
+	mean_time_to_happen = {
+		months = 5000
+	}
+	
+	immediate = {
+		observation_outpost_owner = {
+			limit = { 
+				is_ai = no
+				NOT = { has_country_flag = rogue_scientist_chain }
+			}
+			country_event = { id = observation.11 }
+		}
+		set_planet_flag = missing_scientist_planet
+	}
+}

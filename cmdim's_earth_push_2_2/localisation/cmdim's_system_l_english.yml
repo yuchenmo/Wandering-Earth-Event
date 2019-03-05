@@ -1,0 +1,529 @@
+﻿l_english:
+
+
+ #####
+ #system_initializer
+ #####
+####################################
+ gas_giant_system_initializer1_NAME:0 "随机气体巨星卫星I"
+ gas_giant_system_initializer2_NAME:0 "随机气体巨星卫星II"
+ gas_giant_system_initializer3_NAME:0 "随机气体巨星卫星III"
+ alpha_centauri_initializer_1_NAME:0 "半人马阿尔法"
+
+
+#################################### 
+ gas_giant_system_initializer1_DESC:0 "随机双星系统，从随机气体巨星的一个卫星上开始游戏。"
+ gas_giant_system_initializer2_DESC:0 "随机三星系统，从随机气体巨星的一个卫星上开始游戏。"
+ gas_giant_system_initializer3_DESC:0 "从随机气体巨星的一个卫星上开始游戏,附近必刷地球流浪的sol星系。"
+ alpha_centauri_initializer_1_DESC:0 "人类联合政府的初始星系。 \n\n决定你一开始的星系布局，但不确定其具体位置。"
+
+ 
+#############################################
+ ######################
+ #component_templates
+ #####################
+ 
+ SMALL_PRIMITIVE_MASS_DRIVER_1:0 "电磁炮"
+ PRIMITIVE_MASS_DRIVER_1:0 "电磁炮"
+ SMALL_PRIMITIVE_MASS_DRIVER_1_DESC:0 "电磁炮是利用洛伦兹力的一种低效武器。"
+ PRIMITIVE_MASS_DRIVER_1_DESC:0 "电磁炮是利用洛伦兹力的一种低效武器。"
+ SMALL_PRIMITIVE_ARMOR_1:0 "原始装甲"
+ PRIMITIVE_ARMOR_1:0 "原始装甲"
+ SMALL_PRIMITIVE_ARMOR_1_DESC:0 "粗制的装甲，在提升了外部装甲的同时舍弃了部分船体稳定性"
+ PRIMITIVE_ARMOR_1_DESC:0 "粗制的装甲，在提升了外部装甲的同时舍弃了部分船体稳定性"
+ SHIP_PRIMITIVE_THRUSTER_1:0 "化学推进器"
+ SHIP_PRIMITIVE_THRUSTER_1_DESC:0 "通过低效率的化学反应产生高速气体推动船体移动。"
+ PRIMITIVE_SENSOR_1:0 "原始雷达"
+ PRIMITIVE_SENSOR_1_DESC:0 "低效率和距离短是它的特点。"
+ CORVETTE_PRIMITIVE_FISSION_REACTOR:0 "核裂变反应堆"
+ CORVETTE_PRIMITIVE_FISSION_REACTOR_DESC:0 "通过低效的核裂变来驱动电力系统。"
+ 
+ ##########
+ #tech
+ ########
+ tech_primitive_ship:0 "原始舰船"
+ tech_primitive_ship_desc:0 "简陋和原始的舰船结构，为什么要研究它呢？"
+ tech_heavy_elements_generator:0 "重元素聚变"
+ tech_heavy_elements_generator_desc:0 "通过逆向行星发动机的能源供给来源，我们发现了一种不常规的聚变技术，它可以使一些较重元素发生聚变，从而产生能量和少量合金。"
+ tech_heavy_elements_generator_2:0 "改进型重元素聚变"
+ tech_heavy_elements_generator_2_desc:0 "通过改进重元素聚变反应堆的燃烧结构，使得同时进行多组反应成为了可能。"
+ 
+ #####
+ #flag names
+ ####
+ FLAG_CATEGORY_earth_push:0 "流浪地球"
+ 
+ #######
+ #trait
+ #######
+ trait_great_engineers:0 "愚公移山"
+ trait_great_engineers_desc:0 "§L这个种族能使用原始而简陋的工具完成看似不可能完成的巨型工程。§!"
+ 
+ #######
+ # jobs
+ ######
+ job_heavy_elements_technician:0 "技工"
+ job_heavy_elements_technician_plural:0 "技工"
+ job_heavy_elements_technician_desc:0 "重元素聚变发电机有很多精密设备需要大量人员控制与监督。"
+ job_heavy_elements_technician_effect_desc:0 "£job_heavy_elements_technician $job_heavy_elements_technician_plural$ 将 £minerals §Y$minerals$§!转变为 £energy §Y$energy$§! 和 £alloys §Y$alloys$§!"
+ mod_job_heavy_elements_technician_add:0 "$job_heavy_elements_technician$职业"
+ mod_job_heavy_elements_technician_per_pop:0 "每$VALUE$个人口有§G+1§!个$job_heavy_elements_technician$职业"
+ mod_job_heavy_elements_technician_per_pop_short:0 "每$VALUE$个£pop£有§G+1§!个£mod_job_heavy_elements_technician_add  "
+ 
+ job_heavy_elements_technician_specialist:0 "工程师"
+ job_heavy_elements_technician_specialist_plural:0 "工程师"
+ job_heavy_elements_technician_specialist_desc:0 "工程师负责在平常统筹协调，并能够快速应对运转中的突发情况，使得效益最大化。"
+ job_heavy_elements_technician_specialist_effect_desc:0 "£job_heavy_elements_technician_specialist $job_heavy_elements_technician_specialist_plural$ 消耗 £consumer_goods §Y$consumer_goods$§!转变为 §Y$mod_planet_jobs_energy_produces_mult$§!§G+10%§! 和 §Y$mod_planet_jobs_alloys_produces_mult$§!§G+10%§!"
+ mod_job_heavy_elements_technician_specialist_add:0 "$job_heavy_elements_technician_specialist$职业"
+ mod_job_heavy_elements_technician_specialist_per_pop:0 "每$VALUE$个人口有§G+1§!个$job_heavy_elements_technician$职业"
+ mod_job_heavy_elements_technician_specialist_per_pop_short:0 "每$VALUE$个£pop£有§G+1§!个£mod_job_heavy_elements_technician_specialist_add "
+ 
+ job_earth_push_culture:0 "遗址工作者"
+ job_earth_push_culture_plural:0 "遗址工作者"
+ job_earth_push_culture_desc:0 "这些废弃的行星发动机组被政府永久的设置为文化遗址，很多专家学者慕名而来。"
+ job_earth_push_culture_effect_desc:0 "£job_earth_push_culture $job_earth_push_culture_plural$ 消耗 £consumer_goods §Y$consumer_goods$§!产出 £unity §Y$unity$§! 和 £society_research §Y$society_research$§!"
+ mod_job_earth_push_culture_add:0 "$job_earth_push_culture$职业"
+ mod_job_earth_push_culture_per_pop:0 "每$VALUE$个人口有§G+1§!个$job_earth_push_culture$职业"
+ mod_job_earth_push_culture_per_pop_short:0 "每$VALUE$个£pop£有§G+1§!个£mod_earth_push_culture_add  "
+ 
+ job_primitive_laborer_wandering:0 "工人"
+ job_primitive_laborer_wandering_plural:0 "工人"
+ job_primitive_laborer_wandering_desc:0 "这些原始的工厂被设置在地下城内，工人在此不断辛勤劳作。"
+ mod_job_primitive_laborer_wandering_add:0 "$job_primitive_laborer_wandering$职业"
+ 
+ job_primitive_miner_wandering:0 "$job_miner$"
+ job_primitive_miner_wandering_plural:0 "$job_miner_plural$"
+ job_primitive_miner_wandering_desc:0 "在远离地下城区的黑暗地下进行的危险工作，有时甚至会因此丧命。"
+ mod_job_primitive_miner_wandering_add:0 "$job_primitive_miner_wandering$职业"
+ 
+ job_primitive_technician_wandering:0 "$job_technician$"
+ job_primitive_technician_wandering_plural:0 "$job_technician_plural$"
+ job_primitive_technician_wandering_desc:0 "这些技师负责在地下城区中维护原始的核电厂。"
+ mod_job_primitive_technician_wandering_add:0 "$job_primitive_technician_wandering$职业"
+ 
+ job_primitive_farmer_wandering:0 "农夫"
+ job_primitive_farmer_wandering_plural:0 "农夫"
+ job_primitive_farmer_wandering_desc:0 "这些农民负责地下城中被人造光源充满的农业区块工作，使用的都是原始但是有效的耕作工具。"
+ mod_job_primitive_farmer_wandering_add:0 "$job_primitive_farmer_wandering$职业"
+ 
+ job_primitive_researcher_2_wandering:0 "研究人员"
+ job_primitive_researcher_2_wandering_plural:0 "研究人员"
+ job_primitive_researcher_2_wandering_desc:0 "尽管在地下城条件不是很理想，但是研究者依旧在努力发展科学技术。"
+ mod_job_primitive_researcher_2_wandering_add:0 "$job_primitive_researcher_2_wandering$职业"
+ 
+ job_primitive_priest_2_wandering:0 "祭司"
+ job_primitive_priest_2_wandering_plural:0 "祭司"
+ job_primitive_priest_2_wandering_desc:0 "尽管宗教几乎消亡，但是一些宗教领袖始终不愿意放弃之前的权力。"
+ mod_job_primitive_priest_2_wandering_add:0 "$job_primitive_priest_2_wandering$职业"
+ 
+ job_primitive_warrior_2_wandering:0 "士兵"
+ job_primitive_warrior_2_wandering_plural:0 "士兵"
+ job_primitive_warrior_2_wandering_desc:0 "这些是装备着能在低温下靠谱运转的各类装甲的职业士兵。"
+ mod_job_primitive_warrior_2_wandering_add:0 "$job_primitive_warrior_2_wandering$职业"
+ 
+ job_primitive_bureaucrat_wandering:0 "官僚"
+ job_primitive_bureaucrat_wandering_plural:0 "官僚"
+ job_primitive_bureaucrat_wandering_desc:0 "公务员阶级就算是在这样的时代也不会消亡。"
+ mod_job_primitive_bureaucrat_wandering_add:0 "$job_primitive_bureaucrat_wandering$职业"
+ 
+ ########
+ #buildings
+ #########
+ 
+ building_heavy_elements_generator_1:0 "重元素聚变发电机"
+ building_heavy_elements_generator_1_desc:0 "通过投入一些较重元素，我们可以将 £minerals §Y$minerals$§!转变为 £energy §Y$energy$§!和 £alloys §Y$alloys$§!输出，虽然效率并不理想。"
+ building_heavy_elements_generator_2:0 "改进型重元素聚变发电机"
+ building_heavy_elements_generator_2_desc:0 "通过改进反应堆的燃烧结构，使得同时进行多组 £minerals §Y$minerals$§!转成 £energy §Y$energy$§!和 £alloys §Y$alloys$§!输出成为了可能。"
+ building_heavy_elements_generator_3:0 "综合型重元素聚变发电机"
+ building_heavy_elements_generator_3_desc:0 "改制结构以及高效的人力管理，使得同时将大量 £minerals §Y$minerals$§!转成 £energy §Y$energy$§!和 £alloys §Y$alloys$§!输出成为了可能。"
+ building_primitive_capital2:0 "地下城行政区"
+ building_primitive_capital2_desc:0 "此星球的行星发动机地下城行政区域的集合"
+ building_earth_push:0 "行星发动机组"
+ building_earth_push_desc:0 "巨大的行星发动机组除了提供推力，其地下建筑区满足了各类生产和生活需要。"
+ building_earth_push2:0 "行星发动机组"
+ building_earth_push2_desc:0 "巨大的行星发动机组除了提供推力，其地下建筑区满足了各类生产和生活需要。"
+ building_earth_push3:0 "行星发动机组"
+ building_earth_push3_desc:0 "巨大的行星发动机组除了提供推力，其地下建筑区满足了各类生产和生活需要。"
+ building_earth_push_culture:0 "行星发动机遗址"
+ building_earth_push_culture_desc:0 "这些废弃的行星发动机组被政府永久的设置为文化遗址，提醒着这个种族悲壮的历史。"
+ 
+ ###################
+ # Planet Classes
+ ###################
+ pc_mars_to_be:0 "荒芜世界"
+ pc_mars_to_be_desc:0 "贫瘠的岩石世界，几乎不存在大气层。地表布满陨石坑，生命全无。"
+
+ ###################
+ # primitive age
+ ###################
+ wandering_earth_age:0 "§W流浪时代§!"
+ wandering_earth_age_desc:0 "这颗星球上的土著为了逃避本星系中恒星的灾难而在地表修筑了大量的行星发动机，试图将家园移动到临近的恒星系。\n此文明主要聚居于地下，虽然有较成熟的亚光速科技，大量的探测器也遍布整个星系之中，但是没有发展出任何FTL科技。"
+ 
+ ######
+ #ship&them name
+ ######
+ NAME_Hope_of_Mars:0 "Hope of Mars IV"
+ Hope_of_Marss:0 "Hope of Mars IV"
+ 
+ Human_Coalition_Government:0 "人类联合政府"
+ Human_Coalition_Government: "人类联合政府"
+ alpha_centauri_system::0 "半人马座阿尔法"
+ #####
+ #modification
+ #####
+ earth_push_martial_law:0 "紧急动员令"
+ earth_push_martial_law_desc:0 "这个行星上的土著为对抗外来威胁而凝聚在了一起。"
+ 
+ earth_planet_desertification:0 "荒漠化"
+ earth_planet_desertification_desc:0 "工业的无限制发展导致环境的破坏。"
+ 
+ marsed_planet_created:0 "完美的改造"
+ marsed_planet_created_desc:0 "火星在有详细的规划的情况下被改造环境。"
+ 
+ earth_just_into_orbit:0 "刚刚泊入轨道"
+ earth_just_into_orbit_desc:0 "由于刚刚泊入这个恒星系的宜居轨道还没有多久，生态系统尚未完全恢复。"
+ 
+ mars_to_be_continental:0 "原始的改造"
+ mars_to_be_continental_desc:0 "本星系的土著文明正在试图改造这个本身存在水资源的荒芜星球。"
+ 
+ earth_push:0 "行星发动机"
+ earth_push_desc:0 "这个行星上的土著为了避免毁灭的命运，建造了数万的行星发动机以推动他们离开原来的恒星系。"
+ 
+ earth_push_b:0 "改进的推进系统"
+ earth_push_b_desc:0 "加以改进土著的行星发动机的结构，并用之于帝国舰船，可以有效的提升整体速度。"
+ 
+ earth_push_fail_society_1:0 "失败的土著研究"
+ earth_push_fail_society_1_desc:0 "上一次研究失败的阴影还在影响着我们的科学研究。"
+ 
+ earth_push_fail_society_2:0 "失败的土著研究"
+ earth_push_fail_society_2_desc:0 "上一次研究失败的阴影还在影响着我们的科学研究。"
+ 
+ earth_push_fail_society_3:0 "失败的土著研究"
+ earth_push_fail_society_3_desc:0 "上一次研究失败的阴影还在影响着我们的科学研究。"
+ 
+ earth_push_fail_society_4:0 "失败的土著研究"
+ earth_push_fail_society_4_desc:0 "上一次研究失败的阴影还在影响着我们的科学研究。"
+
+ #####
+ #deposit
+ #######
+ 
+ d_earth_engine_mine:0 "废弃的行星发动机组"
+ d_earth_engine_mine_desc:0 "有计划的拆除这些巨大的发动机组，尽可能获取多的矿物资源。"
+ 
+ d_earth_ruined_city:0 "£blocker 冰封的城市"
+ d_earth_ruined_city_desc:0 "曾经这里一片繁华，但是现在早已是被冰雪覆盖的建筑废墟。"
+ d_earth_massive_glacier:0 "£blocker 巨型冰川"
+ d_earth_massive_glacier_desc:0 "不管之前这里存在什么，现在都已经被一片巨型冰川所覆盖了。"
+ ##########
+ #Amry
+ ##########
+
+ postatomic_army_defense:0 "后原子军"
+ postatomic_army_defense_plural:0 "后原子军"
+ postatomic_army_defense_desc:1 "依照原始标准，后原子军装备精良。其训练和纪律有时甚至比得上最强大的文明军事力量。"
+ earth_rebel_army:0 "自由斗士"
+ earth_rebel_army_plural:0 "自由斗士们"
+ earth_rebel_army_defense_desc:1 "这些狂热的战士似乎是一瞬间就出现的"
+ 
+ ##########
+ #anomalies
+ ###########
+ EARTH_PUSH_FOUND:0 "不寻常的行星运动"
+ EARTH_PUSH_FOUND_DESC:0 "我们的科研船在进入这个恒星系的时候，发现了§Y[From.Planet.GetName]§!的轨道十分诡异，不像是自然形成的..."
+ 
+ ##########
+ #event
+ ##########
+ earth_push.1001.name:0 "流浪地球MOD§H触发菜单§!"
+ earth_push.1001.desc:0 "为了防止两个不同时期的流浪地球同时刷出，现有这菜单。\n§Y默认：§!无视这种情况的发生，继续生成，即使存在两个不同时期的流浪地球。\n§Y禁止流浪地球：§!强制禁止原始的流浪地球生成，如果存在另一个时期的流浪地球。\n§Y禁止预设国家：§!强制禁止预设的"人类联合政府"形成，如果存在另一个时期的流浪地球。\n§Y全部禁止：§!强制禁止所有的流浪地球生成，不论是预设的"人类联合政府"还是原始的流浪地球。§Y将不会触发本MOD任何的事件。§!"
+ earth_push.1001.a:0 "默认"
+ earth_push.1001.a.tooltip:0 "§R选择后将不可更改§!\n这样将可能会造成代入感的缺少！"
+ earth_push.1001.b:0 "禁止流浪地球"
+ earth_push.1001.b.tooltip:0 "§R选择后将不可更改§!\n如果你选择了"随机气体巨星卫星III"开局星系，并且同时强制了"人类联合政府"刷出，那么你附近将不会存在流浪地球!" 
+ earth_push.1001.c:0 "禁止预设国家"
+ earth_push.1001.c.tooltip:0 "§R选择后将不可更改\n如果你正在扮演"人类联合政府"，那么你将会游戏结束！§!" 
+ earth_push.1001.d:0 "全部禁止"
+ earth_push.1001.d.tooltip:0 "§R选择后将不可更改\n如果你正在扮演"人类联合政府"，那么你将会游戏结束！\n如果你选择了"随机气体巨星卫星III"开局星系，那么你附近将不会有流浪地球!§!"  
+  
+ event_chain_earth_push_title:0 "流浪行星事件链"
+ event_chain_earth_push_desc:0 "这个不平常的行星有着许多未知...."
+ 
+
+ 
+ earth_push.1.name:0 "不寻常的行星运动"
+ earth_push.1.desc:0 "根据近期对该行星轨道的研究，我们科学家§Y[Root.GetLeaderName]§!得出一个惊人的结论：它正在要离开其原来存在的恒星系。\n 在进行地面扫描的时候发现了其表面数万座简陋但巨大的推进装置，以及数十亿的生物残骸。简单的分析了其附近原始空间站的数据库，科学家§Y[Root.GetLeaderName]§!发现这群自称§Y$Human$§!的种族认为他们的恒星将在百年后发生氦闪，此举是为了逃离原来的星系。\n 但推演表明，这项计划注定失败，因为难以获取足够的能源。不过这引起了科学家们的兴趣，说不定可以研究出些意想不到的东西。 "
+ earth_push.1.a:0 "那就这样做"
+ earth_push.1.b:0 "不行，把它给我拆了"
+ earth_push.1.c:0 "我们应该尝试联系他们"
+ earth_push.1.d:0 "又是一个黑暗宇宙的牺牲者"
+ earth_push.1.a.tooltip:0 "开启流浪行星事件链"
+ earth_push.1.b.tooltip:0 "开启流浪行星事件链"
+ earth_push.1.c.tooltip:0 "开启流浪行星事件链"
+ 
+
+ earth_push.2.name:0 "行星发动机：§H研究完成§!"
+ earth_push.2.desc:0 "经过我们科学家的分析，虽然这些行星发动机十分简陋，但是其中构造和常规的有所不同，且能源供给似乎并不是依靠普通的核聚变技术。我们是要进一步研究这些技术呢？还是直接将其用于帝国的舰队的推进系统呢？"
+ earth_push.2.a:0 "研究他们的能量来源"
+ earth_push.2.b:0 "我们需要的是推进速度"
+ earth_push.2.c:0 "或许我们还是应该把它拆了..."
+ earth_push.2.b.tooltip:0 "结束流浪行星事件链"
+ 
+ earth_push.3.name:0 "不寻常聚变：§H研究完成§!"
+ earth_push.3.desc:0 "尽管难以置信，但我们科学家经过研究证明，他们掌握了一种能将较重元素进行聚变产能的技术，预计这项技术能使帝国将多出的矿物用作发电，尽管效率可能不是那么理想。"
+ earth_push.3.a:0 "有趣..."
+ earth_push.3.a.tooltip:0 "结束流浪行星事件链"
+  
+ earth_push.4.name:0 "不寻常聚变：§R研究失败§!"
+ earth_push.4.desc:0 "尽管难以置信，但我们科学家却根本无法对这种能量来源有一个统一的认识，任何的能量模型似乎都是毫无规律的，最终我们不得不放弃。不过这似乎激发了某些科学家对于研究的狂热行为。"
+ earth_push.4.a:0 "为什么？为什么？为什么？"
+ earth_push.4.a.tooltip:0 "一名科学领袖获得了§Y狂热§!特性。\n结束流浪行星事件链"
+ 
+ earth_push.5.name:0 "不寻常聚变：§H研究完成§!"
+ earth_push.5.desc:0 "尽管难以置信，但我们科学家经过研究证明，他们掌握并且改进了一种能将较重元素进行聚变产能的技术，虽然效率可能不是那么理想，但是却有组成规模巨大的发电机组的可能，这项技术能使多出的大量矿物用作发电。"
+ earth_push.5.a:0 "好极了"
+ earth_push.5.a.tooltip:0 "结束流浪行星事件链"
+ 
+ earth_push.18.name:0 "行星发动机：§H研究完成§!"
+ earth_push.18.desc:0 "经过我们科学家的分析，虽然这些行星发动机十分简陋，但是其中构造和常规的有所不同，且能源供给似乎并不是依靠普通的核聚变技术。我们是否要继续研究？"
+ earth_push.18.a:0 "把它给我研究透"
+ earth_push.18.b:0 "我们还有更加重要的事情要做"
+ earth_push.18.b.tooltip:0 "结束流浪行星事件链"
+
+ earth_push.20.name:0 "行星发动机：§H开始研究§!"
+ earth_push.20.desc:0 "我们科学家已经在首都[This.Capital.GetName]建立了一个彻底研究这些行星发动机的特殊项目，想必这一定能让我们了解到一些有趣的事情。"
+ earth_push.20.a:0 "很好"
+ 
+ earth_push.21.name:0 "拆除发动机：§H激化矛盾§!"
+ earth_push.21.desc:0 "我们的特种作战指挥部已经拟定了一个完美的作战计划，通过光学迷彩系统欺骗原始的太空舰队登陆之后，在上百座行星发动机安装了足以毁灭其主要结构的炸弹，想必这样能激化本来就存在于这个星球上的社会冲突，为我们的全面入侵做准备。"
+ earth_push.21.a:0 "就这样做"
+ earth_push.21.b:0 "他们只是土著而已！用不着这么麻烦！"
+
+ 
+ earth_push.22.name:0 "激化矛盾：§H研究成功§!"
+ earth_push.22.desc:0 "我们的特种作战小队已经成功的完成了任务，仅仅一瞬间，上百座巨大的发动机便在火光中彻底失效。这彻底激化了§YSol III§!上原住民的社会矛盾，预计他们的政府部队将会为此疲于奔命，这显著降低了他们的军事实力。"
+ earth_push.22.a:0 "很好"
+ earth_push.22.b:0 "或许我们应该趁乱研究研究？"
+ earth_push.22.a.tooltip:0 "在§Y365§!天内，他们的作战实力会大幅度下降"
+ earth_push.22.b.tooltip:0 "在§Y365§!天内，他们的作战实力会大幅度下降"
+ 
+ earth_push.23.name:0 "拆除发动机：§H研究开始§!"
+ earth_push.23.desc:0 "既然我们选择了这条路，那么在彻底征服了§YSol III§!上的原住民后，就应该着手考虑如何把这些简陋的机器拆掉的同时还能尽可能最大化的回收资源。\n工程队已经为此准备了两个方案，第一项是在短时间内尽可能获得多的矿物;第二项是缓慢拆除，长期以来获得的矿物总数量会较大。"
+ earth_push.23.a:0 "我们现在急需矿物"
+ earth_push.23.b:0 "不着急，慢慢来就行"
+ 
+ earth_push.24.name:0 "拆除发动机：§H研究完成§!"
+ earth_push.24.desc:0 "经过不懈努力，我们已经完全拆除了§YSol III§!上的所有行星发动机，并尽可能在有限时间内最大化的回收了建造它们所用的资源，顺便最后利用了这些装置使这颗行星恢复了自转。"
+ earth_push.24.a:0 "很好"
+ earth_push.24.a.tooltip:0 "拆除所有的行星发动机，并恢复行星自转 \n结束流浪行星事件链"
+ 
+ earth_push.25.name:0 "拆除发动机：§H研究完成§!"
+ earth_push.25.desc:0 "经过不懈努力，我们已经对§YSol III§!上的所有行星发动机的拆除工作合理的划分了区域，这样最大化的回收了建造它们所用的资源，顺便最后利用了这些装置使这颗行星恢复了自转。"
+ earth_push.25.a:0 "很好"
+ earth_push.25.a.tooltip:0 "拆除所有的行星发动机，并恢复行星自转 \n结束流浪行星事件链"
+ 
+ earth_push.38.name:0 "建立通讯：§H开始研究§!"
+ earth_push.38.desc:0 "我们科学家已经在首都[This.Capital.GetName]建立了一个尝试破解他们语言和建立通讯的特殊项目，相信用不了多久就能直接交流了。"
+ earth_push.38.a:0 "很好"
+ 
+ earth_push.39.name:0 "建立通讯：§H研究完成§!"
+ earth_push.39.desc:0 "科学家已经成功破解他们的语言，并建立了面向他们领导层的一个稳定的通讯频道，而在最初几个小时的慌乱之后，他们选出了一个代表作为大使和我们对话。"
+ earth_push.39.a:0 "连接通讯"
+  
+ earth_push.40.name:0 "§Y传输信号§!"
+ earth_push.40.desc:0 "向尊敬的外星文明致以我们最崇高的敬意！您好，我们是一群自称人类的智慧种族，请问找我们有何贵干？"
+ earth_push.40.a:0 "这些行星发动机？"
+ earth_push.40.a.response:0 "如您所见，我们只是苟活于这个将死恒星系中的一颗微不足道行星上的智慧生物而已，而这颗被我们称为太阳的恒星将会在数十年后急速老化，为了生存，我们修建了这些可能在您看来十分简陋的推进装置，试图将整个行星移走。"
+ earth_push.40.b:0 "为什么不用飞船呢？"
+ earth_push.40.b.response:0 "可能在您看来这是一件十分简单的事情，但是对于我们却无比困难。就算是我们最顶尖的人才打造的飞船，也仅仅能支持一个城市大小的生态循环系统不到万年，这样短的时间我们根本不可能移动到合适生存的星球。"
+ earth_push.40.c:0 "你们的能源？"
+ earth_push.40.c.response:0 "如您所见，只是简单的将重元素进行核聚变反应罢了，对于您领导的文明来说，这应该是极为简陋的吧。"
+ earth_push.40.d:0 "我们会提供超光速科技"
+ earth_push.40.d.response:0 "超光速科技？这...这真是闻所未闻，相信我们的科学家一定很想将它完全研究透彻的。"
+ earth_push.40.e:0 "我们可以转移你们的种族，只要肯受我们保护"
+ earth_push.40.e.response:0 "意思是用主权换我们种族的生路？抱歉，我们可能要花点时间讨论一下这些事情，过几天再向您给出我们的答案。"
+ earth_push.40.f:0 "我们会帮助你们完成这样的航行"
+ earth_push.40.f.response:0 "这...谢天谢地，您真是一个仁慈的领袖！那么请允许我们用几天时间思考，看看哪里需要您无私的帮助。"
+ earth_push.40.j:0 "我们可以协助你，只要你共享你那神奇科技"
+ earth_push.40.j.response:0 "你是说重元素核聚变技术？好吧，请容许我们花点时间讨论一下这些事情，待会再向您给出我们的答案。"
+ earth_push.40.k:0 "不如来做个交易？"
+ earth_push.40.k.response:0 "交易吗？这样看来确实合情合理，不过毕竟这事我一人无法决定，得花点时间讨论一下这些事情，过几天再向您给出我们的答案。"
+ earth_push.40.i:0 "啊！又是一群美味的食物！"
+ earth_push.40.i.response:0 "等等？你想干什么？原来你们是这样一群邪恶的怪物！我们不会让我们的子民成为你这邪恶生物的食物！"
+ earth_push.40.g:0 "外星混渣，等死吧！"
+ earth_push.40.g.response:0 "既然你选择和我们敌对，我们别无他法，只能誓死捍卫我们的主权！"
+ earth_push.40.h:0 "启用肃清有机威胁协议"
+ earth_push.40.h.response:0 "不管你是不是我们认知意义上的生命体，但是你既然选择了敌对，我们也只能誓死捍卫有机生命的尊严！"
+
+ earth_push_no_next.tooltip:0 "该选项尚未完工，点选不会有任何后续事件。"
+ 
+ earth_push.41.name:0 "提供科技：§H研究完成§!"
+ earth_push.41.desc:0 "经过我们的不懈努力，他们的科学家终于搞清楚了最初级的超光速科技的原理，建造第一台自主的超空间引擎已经被提上议程，他们进入星海指日可待。"
+ earth_push.41.a:0 "干得不错"
+ 
+ earth_push.42.name:0 "肃清土著：§H土著动员§!"
+ earth_push.42.desc:0 "愚蠢的§YSol III§!土著最近发布了紧急动员令，且所有的战舰紧急升空，他们试图通过这样原始的方法来对抗我们不可战胜的军队。"
+ earth_push.42.a:0 "愚不可及"
+ 
+ earth_push.43.name:0 "失败的叛军政变"
+ earth_push.43.desc:0 "我们给予§YSol III§!上文明超光速科技之后，带来了人类社会的一次广泛的变革，却未曾想这些改变过于激烈，以至于彻底激化原本就存在的社会矛盾。\n\n就在刚才，§YSol III§!上的叛军集结了他们所有的力量，试图武装政变人类的联合政府，但还没开始便因为消息暴露而很快被各个击破，纵然有小规模的武装冲突，但目前已经被全面肃清。联合政府为了避免类似事件，升空了所有的战舰，以震慑剩余的死硬分子。"
+ earth_push.43.a:0 "这算是好事吗？"
+ 
+ earth_push.44.name:0 "SolIII上的§R叛军政变§!"
+ earth_push.44.desc:0 "我们给予§YSol III§!上文明超光速科技之后，带来了人类社会的一次广泛的变革，却未曾想这些改变过于激烈，以至于彻底激化原本就存在的社会矛盾。\n\n就在刚才，§YSol III§!上的叛军集结了他们所有的力量，试图武装政变人类的联合政府，叛军仿佛在一瞬间出现在大街小巷，他们甚至还抢夺了准备升空的太空战舰，尽管联合政府反应很迅速，紧急动员了大部分兵力，但就从目前来看，他们应该撑不了多久了..."
+ earth_push.44.a:0 "这到底是怎么一回事？"
+  
+ earth_push.51.name:0 "叛军§R政变成功§!"
+ earth_push.51.desc:0 "随着联合政府舰队的全灭，叛军已经取得绝对优势，虽然还有地面部分的死硬部队还在抵抗，但这不能掩盖叛军成功的事实。\n\n新政府表现出对外星文明极强的敌意，并且对于你单独提供FTL科技给旧政府极为不满，我们可能要面临一场战争了。"
+ earth_push.51.a:0 "谁能说说这发生了什么？"
+ earth_push.51.b:0 "我还怕你一个土著不成？"
+ earth_push.51.c:0 "你还能爆个泰坦秒了我？"
+ 
+ earth_push.55.name:0 "进入太空时代"
+ earth_push.55.desc:0 "随着人类联合政府第一台超空间引擎的建造和第一个恒星基地的完工，人类联合政府正式迈向了太空时代，成为了一个真正的星际文明。"
+ earth_push.55.a:0 "祝他们好运"
+ earth_push.55.b:0 "他们的路还很长呢"  
+
+ earth_push.60.name:0 "§Y传输信号§!"
+ earth_push.60.desc:0 "向尊敬的外星朋友问好，联合政府经过几天的讨论得出了以下需要帮助的事项:\n1.加固一部分没有达到工程标准的行星发动机。\n2.在部分主要推力发动机之中建立高效的管道运输系统。\n3.置换中央反应核心的材料，以整体的提高能源利用率。\n当然，以上的工作我们都会尽力去协助您去完成的。"
+ earth_push.60.a:0 "加固发动机的结构"
+ earth_push.60.a.response:0 "好极了，如果能加固它们，那么我们就有了更加可靠的推进系统了。"
+ earth_push.60.a.tooltip:0 "我们要考虑清楚，如果不能按时完成，§R会降低和他们之间的关系!§!"
+ earth_push.60.b:0 "建立管道系统"
+ earth_push.60.b.response:0 "棒极了，如果能建立这样的管道系统，我们的工人就不用冒着生命危险去运输这些燃料了。"
+ earth_push.60.b.tooltip:0 "我们要考虑清楚，如果不能按时完成，§R会降低和他们之间的关系!§!"
+ earth_push.60.c:0 "提高能源利用率"
+ earth_push.60.c.response:0 "非常好，倘若能换上新的反应部件，那么发动机的效率就可以大幅度的提升了。"
+ earth_push.60.c.tooltip:0 "我们要考虑清楚，如果不能按时完成，§R会降低和他们之间的关系!§!"
+ earth_push.60.d:0 "还有更多任务吗？"
+ earth_push.60.d.response:0 "对于这个...请允许我们再花点时间讨论一下还有什么需要您的帮助吧，再次感谢您的慷慨。另外，工程队很快就会就位的。"
+ earth_push.60.e:0 "那就那么多吧"
+ earth_push.60.e.response:0 "感谢你的慷慨，我们立即会组织人手协助完成任务的。"
+ earth_push.60.f:0 "我突然改变主意了"
+ earth_push.60.f.response:0 "你这样做对我们之间的关系没有好处。"
+ 
+ earth_push.61.name:0 "加固发动机：§H完成§!"
+ earth_push.61.desc:0 "在初期计划如何开展行星流浪之时，人类的科学家已经提出了各种旨在让地壳承受更大推力的方案，然而苦于材料技术的限制，他们只能采取折衷的办法稳固行星发动机。\n\n现在在我们的帮助下，拥有众多发动机的行星北半球的地壳已经被整体加固，该工程的工程量之大、施工时间之紧迫即便是在我们的历史上也是前所未见的，但我们做到了。\n\n现在人类可以考虑在推力足够的情况下不去借助巨型气态行星的引力弹射出太阳系，而是直接加速驶离太阳系。"
+ earth_push.61.a:0 "很好"
+ earth_push.61.b:0 "这只是微不足道的工程罢了"
+ earth_push.61.a.tooltip:0 "§H提升和他们的关系§!"
+ earth_push.61.b.tooltip:0 "§H提升和他们的关系§!"
+ 
+ earth_push.62.name:0 "建立管道系统：§H完成§!"
+ earth_push.62.desc:0 "单台行星发动机每秒消耗的物料是十分恐怖的，更不用说整个行星数以万计的发动机的总消耗量了。\n\n虽然人类动用了庞大的车队保证供给正常，但这种原始的货运方式还是不可避免的导致了行星发动机的后勤障碍。\n\n不过随着我们和人类一起设计并完成了覆盖整个行星的物料管网，这样的问题得到了缓解。虽然这个管网在未来还需要进一步扩建，不过从目前来看已经足够了。"
+ earth_push.62.a:0 "很好"
+ earth_push.62.b:0 "这只是微不足道的工程罢了"
+ earth_push.62.a.tooltip:0 "§H提升和他们的关系§!"
+ earth_push.62.b.tooltip:0 "§H提升和他们的关系§!"
+ 
+ earth_push.63.name:0 "提高能源效率：§H完成§!"
+ earth_push.63.desc:0 "尽管这些竖立在地面的巨大推进装置堪称是土著文明的奇观，然而不可避免的是，当燃料转化成真正的推力时，便已损失了几乎一半的能量。\n\n由于材料学科技的匮乏，反应堆的核心部分还是很原始的。好在我们拥有那样的材料，在不短的一段时间内，我们与当地人员配合，更换了用于核心反应装置的材料。\n\n现在这些推进巨兽能提供更加庞大的推力，也能制造出足够充分的能源，让其地下区域得以高效率的工作，和过上稍微舒适点的生活了。"
+ earth_push.63.a:0 "很好"
+ earth_push.63.b:0 "这只是微不足道的工程罢了"
+ earth_push.63.a.tooltip:0 "§H提升和他们的关系§!"
+ earth_push.63.b.tooltip:0 "§H提升和他们的关系§!"
+ 
+ earth_push.64.name:0 "工程项目：§R失败§!"
+ earth_push.64.desc:0 "我们没能及时的赶上工程开展的时间，导致现在我们和人类联合政府的关系出现了裂痕。"
+ earth_push.64.a:0 "真晦气"
+ earth_push.64.a.tooltip:0 "§R降低和他们的关系§!"
+ 
+ earth_push.70.name:0 "§Y传输信号§!"
+ earth_push.70.desc:0 "再次向尊敬的外星朋友问好！经过深思熟虑，我们现在需要资源：\n1.如果可以的话，我们还是不想过多的牺牲我们的地壳。所以我们需要约5000标准单位的矿物来作为发动机的燃料，\n2.我们的流浪会持续两千五百年，对于我们种族来说，这样长的时间能维持充足的食物供给似乎是比较困难的。所以我们需要约5000标准单位的食物供应。"
+ earth_push.70.a:0 "给你们矿物"
+ earth_push.70.a.response:0 "棒极了，我们的地壳终于不用背过多的消耗了，这对我们在新的家园发展很有利。"
+ earth_push.70.b:0 "给你们食物"
+ earth_push.70.b.response:0 "真不错，要是有这样充足的食物储存，就再也不用担心饥荒的发生了。"
+ earth_push.70.c:0 "就这样吧"
+ 
+ earth_push.90.name:0 "申请项目：§H土著调查§!"
+ earth_push.90.desc.1:0 "随着我们与人类联合政府的交流日益密切，科学家§Y[Root.GetLeaderName]§!申请短期居住在人类的聚居地，以便能在实地对当地的人员和社会进行考察和研究。"
+ earth_push.90.desc.2:0 "随着我们与人类联合政府的交流日益密切，科学家§Y[Root.GetLeaderName]§!希望去人类文明的遗迹处进行勘测，对他们的有趣历史进行研究。"
+ earth_push.90.desc.3:0 "随着我们与人类联合政府的交流日益密切，科学家§Y[Root.GetLeaderName]§!对流传于人类之间的文学作品产生了兴趣，并希望能到他们的聚居地进行研究。"
+ earth_push.90.a:0 "允许"
+ earth_push.90.b:0 "我们没空做这个"
+ earth_push.90.c:0 "还有完没完？！"
+ 
+ earth_push.91.name:0 "土著调查结果报告"
+ earth_push.91.desc.bad1:0 "科学家对于人类的社会研究在最近被宣告失败，原因是部分当地人员的极不配合，导致工作难以开展。"
+ earth_push.91.desc.bad2:0 "因为遇到了当地某些激进分子的袭击，研究的资料被毁灭了。这直接导致了我们科学家的研究难以进行下去，基本上可以认为是失败了。"
+ earth_push.91.desc.bad3:0 "当我们的科学家正在进行研究的时候，毫无预警的灾难直接毁灭了他的暂住点，虽然他逃了出来，但是资料却已经是无法挽回了。"
+ earth_push.91.desc.good1:0 "在当地政府的配合和指引下，我们的科学家收集了大量的研究资料，对于人类的社会和文化了解得更深了。"
+ earth_push.91.desc.good2:0 "随着辛苦的调查和研究，我们的科学家想到了一些以前都未曾想过的理论，可以帮助揭示文明与文化的相关规律。"
+ earth_push.91.desc.good3:0 "在我们科学家进行研究的时候，受到了当地居民自发的热爱，很快的便与科学家打成一片。这极大的方便了工作，最终让我们额外收集了部分资料。"
+ earth_push.91.desc.good4:0 "当地政府对于科学家的所掌握的知识充满了兴趣，作为交换，我们的科学家很快的收集到了大量的关键资料，尽管我们只是交换给他们一些不太重要的理论。"
+ earth_push.91.a:0 "真是晦气"
+ earth_push.91.b:0 "糟糕..."
+ earth_push.91.c:0 "这并不好..."
+ earth_push.91.d:0 "不错"
+ earth_push.91.e:0 "好极了"
+ earth_push.91.f:0 "非常好"
+ 
+ earth_push.200.name:0 "流浪行星：§H抵达目的地§!"
+ earth_push.200.desc:0 "科学家§Y[Root.GetLeaderName]§!最近发现我们在很久之前观测的——用简陋发动机推动整个行星的土著，已经成功的将他们的行星驶入了附近的一个三恒星星系中，目前处于三恒星之一中稳定而适宜的轨道。"
+ earth_push.200.a:0 "令人惊讶"
+ 
+ #########
+ #PROJECT
+ #########
+ 
+ EARTH_PUSH_PROJECT2:0 "行星发动机"
+ EARTH_PUSH_PROJECT2_DESC:0 "这个行星的轨道因为其表面数万座简陋但巨大的推进装置而变得十分不自然，通过研究这些推进装置，我们或许可以从中学到什么。"
+ 
+ EARTH_PUSH_PROJECT:0 "行星发动机"
+ EARTH_PUSH_PROJECT_DESC:0 "这个行星的轨道因为其表面数万座简陋但巨大的推进装置而变得十分不自然，通过研究这些推进装置，我们或许可以从中学到什么。"
+ 
+ HEAVY_ELEMENTS_PUSH_PROJECT:0 "不寻常的聚变技术"
+ HEAVY_ELEMENTS_PUSH_PROJECT_DESC:0 "在之前研究了土著的行星发动机之后，我们的科学家经过验算，发现如果要驱动这些耗能巨兽，寻常的核聚变技术不足以完成，想必他们应该用了一些不寻常的手段增加了能量获取效率。"
+ 
+ REMOVE_EARTH_ENGINE:0 "拆除发动机：激化矛盾"
+ REMOVE_EARTH_ENGINE_DESC:0 "根据推演，倘若我们现在炸毁部分行星发动机，就会使得当地局势失控，这样一来他们就难以全力和我们的入侵部队作战，取胜便轻而易举。"
+ 
+ REMOVE_EARTH_ENGINE_2A:0 "拆除行星发动机"
+ REMOVE_EARTH_ENGINE_2A_DESC:0 "工程队已经为彻底拆除这些简陋的巨兽做出了一个详细的计划。"
+ 
+ REMOVE_EARTH_ENGINE_2B:0 "拆除行星发动机"
+ REMOVE_EARTH_ENGINE_2B_DESC:0 "工程队已经为彻底拆除这些简陋的巨兽做出了一个详细的计划。"
+ 
+ EARTH_COMMUNICATION_PROJECT:0 "建立通讯"
+ EARTH_COMMUNICATION_PROJECT_DESC:0 "如果我们要试图和人类交流，就必须破解人类的语言和建立稳定的通讯通道。"
+  
+ EARTH_FTL_HELP_PROJECT:0 "提供超光速技术"
+ EARTH_FTL_HELP_PROJECT_DESC:0 "由于我们决定要给予人类超光速科技，所以我们特意邀请了他们的顶尖人才来到母星，并要求我们的科学家教会他们最基础的超光速科技。"
+ 
+ HELP_EARTH_MOVE_A:0 "巩固发动机的结构"
+ HELP_EARTH_MOVE_A_DESC:0 "根据我们和人类的工程计划，我们需要动用一艘工程船去协助他们，以便能巩固行星发动机的结构。"
+ 
+ HELP_EARTH_MOVE_B:0 "建立管道系统"
+ HELP_EARTH_MOVE_B_DESC:0 "根据我们和人类的工程计划，我们需要动用一艘工程船去协助他们，以便能在行星发动机下建立管道系统。"
+ 
+ HELP_EARTH_MOVE_C:0 "提高能源利用率"
+ HELP_EARTH_MOVE_C_DESC:0 "根据我们和人类的工程计划，我们需要动用一艘工程船去协助他们，以便能帮助他们完成置换反应炉炉心的材料。"
+
+ ######
+ #Var
+ ######
+ num_helped_earth:0 "帮助项目数"
+ 
+ ####
+ #event flags
+ ####
+ help_earth_move_a:0 "帮助加固结构"
+ help_earth_move_b:0 "帮助建立管道系统"
+ help_earth_move_c:0 "帮助提高能源效率"
+ 
+ ######
+ #opinion modifiers
+ ######
+ opinion_enlightened_rebel:0 "自以为是的外星科技所有者"
+ 
+ ######
+ #EMPIRE
+ ######
+ 
+ START_SCREEN_EARTH_PUSHED:0 "这群从古猿进化成的智慧生物并创造出文明的时间还不过十万年之久，孕育了这样文明的环境却在某一天突然而彻底的改变了——母星系的恒星变得极其不稳定，人类的脆弱家园岌岌可危。\n\n然而这并不能熄灭求生的希望，于是，一代又一代人投入了一次悲壮的航行——将整个行星都驶离原本孕育他们的摇篮，奔向另一个未知的地方。所幸，我们做到了。\n\n在即将到达新的家园的30年前，我们的科学家偶然间触碰到了超空间技术的门槛，当完全到达时，第一台真正的实用的超空间引擎被开发出来了。"
+ EMPIRE_DESIGN_humans10:0 "人类联合政府"
+ EMPIRE_DESIGN_pushed:0 "人类联合政府"
+ EMPIRE_DESIGN_humans10_desc:0 "这群从古猿进化成的智慧生物并创造出文明的时间还不过十万年之久，孕育了他们文明的环境却在某一天突然而彻底的改变了——他们的恒星变得极其不稳定，他们的脆弱家园岌岌可危。\n\n然而这并不能熄灭他们求生的希望，于是，一代又一代人投入了一次悲壮的航行——将整个行星都驶离原本孕育他们的摇篮，奔向另一个未知的地方。所幸，他们做到了。\n\n整个种族为了不可控的天灾做出的牺牲，以及多变的天性注定了他们文明的潜力难以估计。 "
+
+ EMPIRE_DESIGN_pushed_desc:0 "这群从古猿进化成的智慧生物并创造出文明的时间还不过十万年之久，孕育了他们文明的环境却在某一天突然而彻底的改变了——他们的恒星变得极其不稳定，他们的脆弱家园岌岌可危。\n\n然而这并不能熄灭他们求生的希望，于是，一代又一代人投入了一次悲壮的航行——将整个行星都驶离原本孕育他们的摇篮，奔向另一个未知的地方。所幸，他们做到了。\n\n整个种族为了不可控的天灾做出的牺牲，以及多变的天性注定了他们文明的潜力难以估计。"

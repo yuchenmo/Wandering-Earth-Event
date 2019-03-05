@@ -1,0 +1,133 @@
+# All global modifiers are here.  They are applied from certain game-features.
+#
+# Effects are fully scriptable here.
+
+# The names can NOT be removed or changed since the code references them
+
+##########################################################################
+# Empire Base
+##########################################################################
+
+##########################################################################
+# Empire Modifiers
+##########################################################################
+
+earth_push_a = {
+	planet_jobs_engineering_research_produces_mult = 0.05
+}
+
+earth_push_b = {
+	ship_speed_mult = 0.1
+}
+
+earth_push_fail_society_1 = {
+	planet_jobs_society_research_produces_mult = -0.1
+}
+
+earth_push_fail_society_2 = {
+	planet_jobs_society_research_produces_mult = -0.2
+}
+
+earth_push_fail_society_3 = {
+	planet_jobs_society_research_produces_mult = -0.3
+}
+
+earth_push_fail_society_4 = {
+	planet_jobs_society_research_produces_mult = -0.4
+}
+
+earth_push_all_added_1 = {
+	stations_produces_mult = 0.2
+	planet_jobs_produces_mult = 0.2
+	all_technology_research_speed = 0.75
+	num_tech_alternatives_add = 1
+}
+
+earth_push_all_added_2 = {
+	planet_jobs_produces_mult = 0.1
+	all_technology_research_speed = 0.25
+
+}
+
+##########################################################################
+# Defensive War
+##########################################################################
+earth_push_rebel_forces = {
+	army_defense_morale_mult = -0.33
+	army_defense_damage_mult = -0.33
+}
+earth_push_emergency_mobilization = {
+	army_morale = 0.5
+	army_defense_morale_mult = 0.5
+	army_defense_damage_mult = 0.5
+
+}
+
+earth_push_martial_law = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_martial_law.dds"
+	icon_frame = 2
+	planet_jobs_produces_mult = -0.33
+	pop_growth_speed = -0.5
+	pop_growth_from_immigration = -0.5
+	pop_assembly_speed = -0.5
+	job_primitive_warrior_2_wandering_add = 1
+}
+##########################################################################
+# High War Exhaustion
+##########################################################################
+
+
+##########################################################################
+# Difficulty Modifiers - not applied to vassals of players
+##########################################################################
+
+
+##########################################################################
+# Pop Modifiers
+##########################################################################
+
+
+
+##########################################################################
+# Generated Planet Modifiers
+##########################################################################
+
+earth_planet_desertification = {
+	pop_environment_tolerance = -0.5
+	
+	
+	icon = "gfx/interface/icons/planet_modifiers/pm_bleak.dds"
+	icon_frame = 3
+}
+
+earth_just_into_orbit = {
+	pop_environment_tolerance = -0.4
+	
+	icon = "gfx/interface/icons/planet_modifiers/pm_planet_from_space.dds"
+	icon_frame = 3
+}
+
+marsed_planet_created = {
+	pop_environment_tolerance = 0.2
+	pop_growth_speed = 0.1
+	
+	icon = "gfx/interface/icons/planet_modifiers/pm_planet_surface.dds"
+	icon_frame = 1
+}
+
+mars_to_be_continental = {
+	
+	icon = "gfx/interface/icons/planet_modifiers/pm_atmospheric_hallucinogen.dds"
+	icon_frame = 2
+}
+
+
+earth_push = {
+	
+	icon = "gfx/interface/icons/planet_modifiers/pm_atmospheric_hallucinogen.dds"
+	icon_frame = 2
+}
+
+##########################################################################
+# Rank modifiers
+##########################################################################

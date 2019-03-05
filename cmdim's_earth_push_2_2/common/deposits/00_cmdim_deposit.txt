@@ -1,0 +1,83 @@
+## Possible Deposit Variables ##
+# resources, resource and amount
+# potential trigger (planet scope)
+# planet_modifier - applied to planet only when deposit blocker has been cleared
+# constant_modifier - applied to planet always
+# station = station class in orbit to gather
+
+@blocker_high = 10
+@blocker_low = 5
+
+d_earth_engine_mine = {
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	icon = d_earth_engine_mine
+	
+	planet_modifier = {
+		district_mining_max = 2
+		planet_jobs_minerals_produces_mult = 0.05
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+
+d_earth_ruined_city = {
+	time = 360
+#	icon = d_city_ruins
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers	
+	
+	potential = { always = no }
+	
+	planet_modifier = { 
+		planet_max_districts_add = -1
+		district_mining_max = -1
+	}
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 1000
+			minerals = 1000
+		}
+	}
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_earth_massive_glacier = {	
+	icon = d_massive_glacier
+	time = 180
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers	
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 500
+		}
+	}
+	
+	potential = {
+		is_cold = yes	
+	}
+	
+	planet_modifier = { 
+		planet_max_districts_add = -1
+	}
+	
+
+	drop_weight = {
+		weight = 0
+		}
+	}
+	
+	prerequisites = { "tech_massive_glacier" }
+}

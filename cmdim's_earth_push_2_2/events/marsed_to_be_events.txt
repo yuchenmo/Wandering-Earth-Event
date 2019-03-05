@@ -1,0 +1,84 @@
+namespace = mars_to_be
+#EnterSystem
+ship_event = {
+	id = mars_to_be.10
+	title =  mars_to_be.10.name
+	desc =  mars_to_be.10.desc
+	picture = GFX_evt_mars_to_be
+	location = from
+	show_sound = event_ship_bridge
+
+	is_triggered_only = yes
+
+	trigger = {
+		from = {
+			has_star_flag = marsed_to_be_system
+		}
+		owner = {
+			
+			OR = {
+				is_country_type = default
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire
+			}
+		}
+	}
+
+	immediate = {
+		owner = {
+			set_country_flag = marsed_to_be_system_encounter
+		}
+	}
+
+	option = {
+		name = mars_to_be.10.a
+	}
+}
+#SurveyPlanet
+ship_event = {
+	id = mars_to_be.1
+	title = mars_to_be.1.name
+	desc = mars_to_be.1.desc
+	picture = GFX_evt_mars_to_be
+	location = from
+	show_sound = event_ship_bridge
+
+	is_triggered_only = yes
+
+	trigger = {
+		from = {
+			has_planet_flag = planet_marsed_to_be
+		}
+		owner = {
+			NOT = { has_country_flag = found_planet_marsed_to_be }
+			OR = {
+				is_country_type = default
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire
+			}
+		}
+	}
+
+	immediate = {
+		owner = {
+			set_country_flag = found_planet_marsed_to_be
+		}
+	}
+
+	option = {
+		name = mars_to_be.1.a
+		owner = {	add_resource = {	society_research = 300 }	}
+		
+		on_spawn = {
+		solar_system = {
+			random_system_planet = {
+				limit = {
+					has_planet_flag = planet_marsed_to_be
+				}
+				add_modifier = { modifier = mars_to_be_continental days = -1 } 
+					}
+				}
+			}
+	
+	}
+}
