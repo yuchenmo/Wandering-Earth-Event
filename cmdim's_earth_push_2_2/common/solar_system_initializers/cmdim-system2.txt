@@ -472,6 +472,7 @@ alpha_centauri_system = {
 		count = 1
 		orbit_distance = 25
 		class = random_non_colonizable
+		has_ring = no
 		size = { min = 8 max = 13 }
 		orbit_angle = { min = 90 max = 270 }
 		init_effect = {

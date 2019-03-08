@@ -28,6 +28,9 @@ opinion_observation_us = {
 
 opinion_enlightened_no_rebel = {
 	opinion = {
-		base = 40
+		base = 60
+	}
+		decay = {
+		base = -1
 	}
 }

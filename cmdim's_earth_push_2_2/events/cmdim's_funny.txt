@@ -93,7 +93,7 @@ ship_event = {
 		name = earth_push.1.d
 		owner = { add_resource = { influence = 50 } }
 		hidden_effect = {
-		owner = { country_event = { id = earth_push.200 months = 30000 random = 1500 } }
+		owner = { country_event = { id = earth_push.199 days = 7200 random = 2400 } }
 		owner = { set_country_flag = earth_push_ignore }
 		}
 	}
@@ -1046,7 +1046,9 @@ country_event = {
 	#fire_only_once = yes
 	
 	immediate = {
-			
+		event_target:My_Country_target = {
+			owner = { country_event = { id = earth_push.957 days = 1 } }
+		}
 		owner = {
 			
 			country_event = { id = earth_push.47 }
@@ -1276,7 +1278,7 @@ country_event = {
 						}
 					}	
 					starbase = {
-						owner = { country_event = { id = primitive.180 days = 10 } }
+						owner = { country_event = { id = primitive.180 } }
 					}
 				}
 			}				
@@ -1586,7 +1588,7 @@ country_event = {
 						}
 					}	
 					starbase = {
-						owner = { country_event = { id = primitive.180 days = 10 } }
+						owner = { country_event = { id = primitive.180 days = 1 } }
 					}
 				}
 			}				
@@ -2467,19 +2469,76 @@ country_event = {
 			owner = { has_country_flag = help_earth_move_finish_a }
 			owner = { has_country_flag = help_earth_move_finish_b }
 			owner = { has_country_flag = help_earth_move_finish_c }
-			}
-		
+		}
+		NOT = { has_country_flag = planet_earth_gone_sol }
 	}
-	mean_time_to_happen = { months = 12 }
+	mean_time_to_happen = { months = 48 }
 	
 	immediate = {
-	owner = { country_event = {id = earth_push.200 days = 116800 random = 7200 } }
+	owner = { set_country_flag = planet_earth_gone_sol }
+	owner = { country_event = {id = earth_push.199 days = 3600 random = 1200 } }
 	}
 	
 	
 }
 
+country_event = {
+	id = earth_push.199
+	title = earth_push.199.name
+	desc = { #ignore
+		text = earth_push.199.desc.1
+		trigger = {
+			owner = { has_country_flag = earth_push_ignore }
+		}
+	}
+	desc = { #help
+		text = earth_push.199.desc.2
+		trigger = {
+			OR = {
+			owner = { has_country_flag = help_earth_move_fail }
+			owner = { has_country_flag = help_earth_move_finish_a }
+			owner = { has_country_flag = help_earth_move_finish_b }
+			owner = { has_country_flag = help_earth_move_finish_c }
+			}
+		}
+	}
+	fire_only_once = yes
+	picture = GFX_evt_earth_push_2
+	is_triggered_only = yes
+	
+	trigger = {
 
+	}
+	
+	immediate = {
+	
+		hidden_effect = {
+			event_target:remove_earth_engine = {
+				change_pc = pc_barren
+				set_planet_size = 6
+			}
+		}
+	}		
+	option = {
+	name = earth_push.199.a
+	owner = { country_event = {id = earth_push.200 days = 720000 random = 14400 } }
+	trigger = {
+			owner = { has_country_flag = earth_push_ignore }
+		}
+	}
+	option = {
+	name = earth_push.199.b
+	owner = { country_event = {id = earth_push.200 days = 96800 random = 7200 } }
+	trigger = {
+			OR = {
+			owner = { has_country_flag = help_earth_move_fail }
+			owner = { has_country_flag = help_earth_move_finish_a }
+			owner = { has_country_flag = help_earth_move_finish_b }
+			owner = { has_country_flag = help_earth_move_finish_c }
+			}
+		}
+	}
+}
 
 #Changing orbit to other sun
 country_event = {
@@ -2503,7 +2562,7 @@ country_event = {
 		}
 	}
 	fire_only_once = yes
-	picture = GFX_evt_news_room
+	picture = GFX_evt_earth_push_2
 	is_triggered_only = yes
 	
 	trigger = {
@@ -2519,10 +2578,10 @@ country_event = {
 			
 		}
 		hidden_effect = {
-			event_target:remove_earth_engine = {
-				change_pc = pc_barren
-				set_planet_size = 7
-			}
+			#event_target:remove_earth_engine = {
+			#	change_pc = pc_barren
+			#	set_planet_size = 7
+			#}
 			event_target:earth_push_to_be = {
 				
 				change_pc = pc_continental
@@ -2678,6 +2737,12 @@ country_event = {
 	}
 	option = {
 	name = earth_push.200.b
+	event_target:country_earth_moved_primitive = {
+			add_opinion_modifier = { 
+				who = event_target:My_Country_target
+				modifier = opinion_enlightened_no_rebel
+			}
+		}
 	trigger = {
 			OR = {
 			owner = { has_country_flag = help_earth_move_fail }
@@ -2717,7 +2782,7 @@ planet_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 10
+		months = 36
 	}
 	
 	immediate = {
@@ -2765,7 +2830,7 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			random_list = {
-				100 = { country_event = { id = earth_push.955 days = 30 random = 5 } }
+				100 = { country_event = { id = earth_push.955 days = 300 random = 120 } }
 				
 			}
 		}
@@ -2789,15 +2854,7 @@ country_event = {
 	immediate = {
 		save_global_event_target_as = My_Country_target_2
 		
-		event_target:wandering_earth_country_2 = {
 		
-		owner = { country_event = { id = earth_push.42 days = 5 }  }
-		owner = { country_event = { id = earth_push.53 days = 100 }  }
-		}
-		
-		event_target:My_Country_target_2 = {
-		owner = { country_event = { id = earth_push.954 days = 98 }  }
-		}
 	}
 	
 	picture_event_data = {
@@ -2808,36 +2865,113 @@ country_event = {
 		room = event_target:remove_earth_engine
 	}
 	
-	option = {
+	option = { #no don't give 
 		name = earth_push.952.a
+		custom_tooltip = earth_push.952.a.tooltip
 		response_text = earth_push.952.a.response
-		is_dialog_only = yes
+		owner = { add_resource = { influence = 20 } }
+		event_target:wandering_earth_country_2 = {
+		owner = { add_resource = { influence = 200 } }
+		#owner = { country_event = { id = earth_push.42 days = 5 }  }
+		owner = { country_event = { id = earth_push.53 days = 360 }  }
+		}
+		
+		event_target:My_Country_target_2 = {
+		owner = { country_event = { id = earth_push.954 days = 357 }  }
+		}
+		
 	}
-	option = {
+	option = { #yes or no ?
 		name = earth_push.952.b
-		response_text = earth_push.952.b.response
-		is_dialog_only = yes
+		
+		owner = { country_event = { id = earth_push.953 }  }
 	}
+}
 
-	option = {
-		name = earth_push.952.c
+country_event = {
+	id = earth_push.953
+	title = earth_push.953.name
+	desc = earth_push.953.desc
+	trackable = yes
+	
+	diplomatic = yes
+	
+	is_triggered_only = yes
+
+	immediate = {
+		
+	}
+	
+	picture_event_data = {
+		portrait = event_target:wandering_earth_country
+		planet_background = event_target:remove_earth_engine
+		graphical_culture = event_target:remove_earth_engine
+		city_level = event_target:remove_earth_engine
+		room = event_target:remove_earth_engine
+	}
+	
+	option = {#no don't give 
+		name = earth_push.953.a
+		custom_tooltip = earth_push.953.a.tooltip
+		response_text = earth_push.953.a.response
+		owner = { add_resource = { influence = 20 } }
+		event_target:wandering_earth_country_2 = {
+		owner = { add_resource = { influence = 200 } }
+		#owner = { country_event = { id = earth_push.42 days = 5 }  }
+		owner = { country_event = { id = earth_push.53 days = 360 }  }
+		}
+		
+		event_target:My_Country_target_2 = {
+		owner = { country_event = { id = earth_push.954 days = 357 }  }
+		}
+	}
+	option = #yes,give 
+		name = earth_push.953.b
+		response_text = earth_push.953.b.response
+		custom_tooltip = earth_push.953.b.tooltip
+		allow = { 
+			resource_stockpile_compare = {
+				resource = influence
+				value >= 100
+			}
+		}
+		owner = { add_resource = { influence = -100 } }
+		event_target:My_Country_target_2 = {
+		owner = { country_event = { id = earth_push.959 days = 30 }  }
+		owner = { country_event = { id = earth_push.53 days = 28 }  }
+		}
 		
 	}
 }
+
 
 country_event = {
 	id = earth_push.954
 	title = earth_push.954.name
 	desc = earth_push.954.desc
-	picture = GFX_evt_earth_large_explosion
+	picture = GFX_evt_large_explosion
 	 
 	location = FROM
 	
 	is_triggered_only = yes
 	immediate = {
-	
-	
+		random_list = {
+				40 = { 
+					owner = { country_event = { id = earth_push.956 days = 1 }  }
+				}
+				60 = { }
+		}
 	event_target:wandering_earth_country_2 = {
+			create_leader = {
+					class = admiral
+					species = owner_main_species
+					name = random
+					skill = 5
+					traits = {
+						trait = leader_trait_gale_speed
+						trait = leader_trait_aggressive
+					}
+				}
 			change_government = {
 					civics = {
 						civic = civic_warrior_culture 
@@ -2864,24 +2998,24 @@ country_event = {
 					set_location = event_target:remove_earth_engine
 				}
 			}
-		capital_scope.solar_system.starbase = {
-					set_owner = event_target:wandering_earth_country_2
-			}
+		
 		add_opinion_modifier = { 
 				who = event_target:My_Country_target_2
 				modifier = opinion_observation_us
 			}
+			
+		}
+	event_target:My_Country_target_2 = {
+		set_country_flag = observation_earth_push_country
 		}
 	}
-	event_target:My_Country_target_2 = {
-		
-		set_country_flag = observation_earth_push_country
-	}
+
 	option = {
 		name = earth_push.954.a
-		custom_tooltip = earth_push.954.a.tooltip
+		#custom_tooltip = earth_push.954.a.tooltip
 	}
 }
+
 
 country_event = {
 	id = earth_push.955
@@ -2902,6 +3036,128 @@ country_event = {
 		
 	}
 }
+
+#change starbase for observation earth
+country_event = {
+	id = earth_push.956
+	title = earth_push.956.name
+	desc = earth_push.956.desc
+	picture = GFX_evt_interior_battle
+	
+	location = FROM
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	
+	
+		event_target:wandering_earth_country_2 = {
+		capital_scope.solar_system.starbase = {
+			set_owner = event_target:wandering_earth_country_2
+				
+			}
+		}
+	}
+	option = {
+		name = earth_push.956.a
+	}
+}
+
+#change starbase for rebel earth
+country_event = {
+	id = earth_push.957
+	title = earth_push.957.name
+	desc = earth_push.957.desc
+	picture = GFX_evt_interior_battle
+	#fire_only_once = yes
+	location = FROM
+	hide_window = yes
+	trigger = {
+#		this = {
+#			has_country_flag = country_earth_rebel
+#		}
+	}
+	is_triggered_only = yes
+	immediate = {
+	event_target:My_Country_target = {
+	owner = { country_event = { id = earth_push.960 days = 4 }  }
+	}
+	event_target:Ground_Doctrine = {
+		capital_scope.solar_system.starbase = {
+			set_owner = event_target:Ground_Doctrine
+			}
+		}
+	}
+	
+	option = {
+		name = earth_push.957.a
+	}
+}
+
+#change starbase for no rebel earth
+country_event = {
+	id = earth_push.958
+	title = earth_push.958.name
+	desc = earth_push.958.desc
+	picture = GFX_evt_interior_battle
+	fire_only_once = yes
+	location = FROM
+	
+	is_triggered_only = yes
+	immediate = {
+	event_target:wandering_earth_country = {
+		capital_scope.solar_system.starbase = {
+			set_owner = event_target:wandering_earth_country
+			}
+		}
+	}
+	
+	option = {
+		name = earth_push.958.a
+	}
+}
+
+#change with no war and starbase for observation earth
+country_event = {
+	id = earth_push.959
+	title = earth_push.959.name
+	desc = earth_push.959.desc
+	picture = GFX_evt_interior_battle
+	fire_only_once = yes
+	location = FROM
+	
+	is_triggered_only = yes
+	immediate = {
+	event_target:wandering_earth_country_2 = {
+		capital_scope.solar_system.starbase = {
+			set_owner = event_target:wandering_earth_country_2
+				
+		}
+	}
+	
+	option = {
+		name = earth_push.959.a
+	}
+}
+
+country_event = {
+	id = earth_push.960
+	title = earth_push.960.name
+	desc = earth_push.960.desc
+	picture = GFX_evt_interior_battle
+	fire_only_once = yes
+	location = FROM
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	
+	}
+	
+	option = {
+		name = earth_push.960.a
+	}
+}
+
+
 
 
 
@@ -3066,6 +3322,46 @@ country_event = {
 	}
 }
 
+
+#give starbase ; has bug ;may be no use
+country_event = {
+	id = earth_push.1010
+	title = earth_push.1010.name
+	location = from.capital_scope.solar_system
+	desc = earth_push.1010.desc
+
+	diplomatic = yes
+
+	is_triggered_only = yes
+	
+	trigger = {
+		THIS = {
+			
+		}
+	}
+		
+	picture_event_data = {
+		portrait = from
+		planet_background = from
+		graphical_culture = from
+		city_level = from
+		room = from.ruler
+	}
+	immediate = {
+		hidden_effect = {
+			from = {
+				capital_scope.solar_system.starbase = {
+					set_owner = root.from
+				}
+			}
+		}
+	}
+
+	option = {
+		name = earth_push.1010.a
+		
+	}
+}
 
 
 ####
